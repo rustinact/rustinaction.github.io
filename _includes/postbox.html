@@ -1,0 +1,54 @@
+<!-- begin post -->
+{% assign author = site.authors[post.author] %}
+
+<div class="blog-grid-item">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="{{ site.baseurl }}{{ post.url }}">
+                {% if post.image %}
+                    {% if site.lazyimages == "enabled" %}
+                        <img class="img-thumb lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}/{{ post.image }}{% endif %}" alt="{{ post.title }}">
+                    {% else %}
+                        <img class="img-thumb" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}/{{ post.image }}{% endif %}" alt="{{ post.title }}"> 
+                    {% endif %}
+                {% endif %}
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">
+                <a class="text-dark" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                {% if post.rating %}
+                    <div class="mb-2 mt-2 font-weight-normal">
+                        {% include star_rating_postbox.html %}
+                    </div>
+                {% endif %}
+            </h2>
+            <span class="card-text">{{ post.subtitle | strip_html | truncatewords:50 }}</span>
+        </div>
+        {% if post.author %}
+            <div class="card-footer d-flex align-items-center mt-0" style="font-size: 85%">
+                <div>
+                    <img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
+                </div>
+                <div class="post-name">
+                    <b>{{ author.display_name }}</b><br/>
+                    <span>{{ post.date | date_to_string | date: "%b %-d, %Y" }} - {% include read-time.html %}</span>
+                </div>
+            </div>
+        {% endif %}
+        <div class="clearfix"></div>
+
+        <!-- Tags -->
+        <div class="card-footer">
+            <ul class="tags">
+                {% assign sortedTags = post.tags | sort %}
+                {% for tag in sortedTags %}
+                <li>
+                    <a class="smoothscroll" href="{{ site.baseurl }}/tags#{{ tag | replace: " ","-" }}">{{ tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>                    
+        </div>        
+    </div>
+</div>
+<!-- end post -->
