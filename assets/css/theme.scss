@@ -197,7 +197,6 @@ img, img:hover {
     height: 100%;
     border-right: solid rgba(0, 0, 0, 0.07) 1px;
     z-index: 1022;
-    //background: #fff;
     background: $grey-bg;
 }
 .nav-icon {
@@ -476,7 +475,8 @@ img, img:hover {
 
 // blog 
 .article-post, .entry-header, .comments, .rating, .authorbox {
-    max-width: 740px;
+    // max-width: 740px;
+    max-width: 800px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
