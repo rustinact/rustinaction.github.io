@@ -858,7 +858,6 @@ ul.tags li {
 }
 ul.tags li a {
     align-items: center;
-    //background-color: #e8f0fe;
     background-color: rgba(76, 73, 203, 0.15);
     font-family: "Noto Sans Display", Helvetica Neue, Helvetica, Arial, sans-serif;
     border-radius: 5px;
@@ -866,7 +865,7 @@ ul.tags li a {
     font-size: small;
 }
 ul.tags li a:hover {
-    background: rgb(133, 193, 233);
+    background: rgb(107, 151, 255);
     color: rgb(255, 255, 255);
     text-decoration: none;
 }

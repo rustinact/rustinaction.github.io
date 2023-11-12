@@ -7,21 +7,13 @@ comments: false
 --imageshadow: false
 ---
 
-We live in a world full of data, but how can we best use it? It's hardly a secret that data is the most precious thing on the planet when used wisely.
+The objective of <b>{{ site.name }}</b> is to encourage the exchange of ideas among rust developers, who each possess a unique set of skills and expertise, through virtual collaboration. We explore an extensive range of concepts here. It strives to be your first stop for information that is not only easier to understand but also covers all the ground you’ll need to fully grasp the concepts being presented.
 
-The goal of <b>{{ site.name }}</b> is to virtually unite data professionals, each with their own unique set of skills and expertise, to share their insights with one another. Presently, it serves as a blog platform where we delve into a broad variety of data-related concepts, such as how to productively produce, manage, and democratize data.
-
-Teaching oneself in the clearest words possible and then passing that information on to those who are interested in our areas of expertise has shown to be a very effective strategy of improving our understanding even better.
-
-I'm sure I can count on many of you agreeing with me when I say that, depending on the subject, it may take a lot of time to read several books, blogs, and other documents until we discover one that conveys the concept in a way that connects with us. It should come as no surprise that the most satisfying explanations that stick with us may consist of fragments of information from more than one source. To save you time and effort, <b>{{ site.name }}</b> aims to be your first stop for information that is not only easier to understand but also covers all the ground you'll need to fully grasp the concepts being presented.
-
-<!--Every contribution is reviewed by our moderators, who apply our criteria to determine whether it meets our standards and provides value to our readers.-->
+<b>Rust</b> is a great choice when performance matters and it solves pain points that bother many other languages. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.
 
 Feel free to get in [touch]({{ site.baseurl }}/contact) with us if you like reading our posts, have feedback for us, or would like to contribute.
  
 Happy learning!
-
-**Senthil Nayagan**<br/>
 
 **Email:** [hello@rustinaction.dev](mailto:hello@rustinaction.dev)<br/>
 **Twitter:** [rustinact](https://twitter.com/rustinact){:target="_blank"}<br/>
