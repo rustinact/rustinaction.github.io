@@ -505,10 +505,10 @@ img, img:hover {
 }
 .entry-header {
     .author-thumb {
-        width: 60px;
+        width: 80px;
         border-radius: 50%;
         margin-right: 10px;
-        border: 2px solid darken($author, 0%);
+        // border: 2px solid darken($author, 0%);
         padding: 2px;
     }
     .kicker {
@@ -525,8 +525,8 @@ img, img:hover {
     }
     .author-thumb {
         width: 100px;
-        border-radius: 50%;
-        border: 8px solid darken($author, 0%);
+        // border-radius: 50%;
+        // border: 4px solid darken($author, 20%);
         padding: 2px;
     }
 }
