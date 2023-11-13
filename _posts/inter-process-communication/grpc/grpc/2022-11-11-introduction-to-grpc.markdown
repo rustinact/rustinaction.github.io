@@ -2,7 +2,7 @@
 layout: post
 title:  "Introduction to gRPC"
 kicker: "RPC"
-subtitle: "gRPC is an open-source, high-performance RPC framework that can run in any environment. gRPC builds on HTTP/2 protocol and the protobuf message-encoding protocol to provide high performance, low-bandwidth communication between applications and services."
+summary: "gRPC is an open-source, high-performance RPC framework that can run in any environment. gRPC builds on HTTP/2 protocol and the protobuf message-encoding protocol to provide high performance, low-bandwidth communication between applications and services."
 image: assets/images/posts-cover-images/grpc.jpg
 author: senthil
 date: 2022-11-11 00:00:00 +0530

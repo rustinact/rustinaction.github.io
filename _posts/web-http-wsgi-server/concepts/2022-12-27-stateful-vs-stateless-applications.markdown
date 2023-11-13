@@ -2,7 +2,7 @@
 layout: post
 title:  "Stateful vs. Stateless Applications"
 kicker: "Web Server"
-subtitle: "???."
+summary: "???."
 --image: assets/images/posts-cover-images/inverted-index.jpg
 author: senthil
 date: 2022-12-27 00:00:00 +0530
