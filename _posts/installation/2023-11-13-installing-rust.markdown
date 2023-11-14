@@ -13,6 +13,10 @@ hidden: false
 toc: true
 ---
 
+# A brief introduction to Rust
+
+Let's begin with a brief introduction to Rust. Rust is a great choice when performance matters and it solves pain points that bother many other languages. For the eighth year in a row, Rust has topped the chart as “the most desired programming language" in Stack Overflow’s annual developer survey, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.
+
 # Rust Playground
 
 The **Rust Playground** allows us to experiment with Rust without the need to install it locally. If you don't want to install any binaries in your current working environment, then Rust Playground would be the most practical way to begin writing Rust programs right away.
