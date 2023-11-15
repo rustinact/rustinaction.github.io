@@ -42,6 +42,7 @@
                     <nav class="site-nav">
                         <div class="site-nav-left-wrapper">
                             <div class="site-nav-left">
+                                <!-- Site Logo/Name -->
                                 <a class="navbar-brand" href="{{ site.baseurl }}/">
                                     <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
                                 </a>
@@ -99,32 +100,6 @@
     <div class="site-content {% if page.url == '/' %} firstpage {% endif %}">
 
     <div class="container">
-        <!-- Site Logo/Name -->
-        <!--
-        <a class="navbar-brand" href="{{ site.baseurl }}/">
-            <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
-        </a>
-        &nbsp;&nbsp;
-        <a href="https://twitter.com/rustinact" target="_blank" style="text-decoration: none;">
-            <span style="color:#616A6B; font-size: 25px;">
-                <i class="fa-brands fa-x-twitter"></i>
-            </span>
-        </a>
-        &nbsp;&nbsp;
-        <a href="https://www.instagram.com/rustinaction" target="_blank" style="text-decoration: none;">
-            <span style="color:#616A6B; font-size: 25px;">
-                <i class="fa-brands fa-square-instagram"></i>
-            </span>
-        </a> 
-        <hr class="grey_line"></hr>-->
-
-        <!-- Site Tag or Title -->
-        <!--{% if page.url == '/' %}
-            <p class="sitetag">
-                {{ site.description }}
-            </p>
-        {% endif %}-->
-        
         <!-- Content -->
         <div class="main-content">
             {{ content }}

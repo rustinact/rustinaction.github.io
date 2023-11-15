@@ -330,7 +330,7 @@ img, img:hover {
         font-size: 22px;
         line-height: 1.4;
         a { 
-            background-image: linear-gradient(180deg, transparent 89%, $primary 0);
+            background-image: linear-gradient(180deg, transparent 89%, $red 0);
             background-repeat: no-repeat;
             background-size: 0 100%;
             transition: background-size .6s ease;
@@ -493,7 +493,6 @@ img, img:hover {
     margin-right: auto;
     margin-top: 50px;
     margin-bottom: 50px;
-    border-radius: 10px;
     overflow: hidden;
 }
 .image-shadow {   
@@ -674,7 +673,7 @@ img, img:hover {
         font-size: 20px;
         margin-bottom: 5px;
         &:hover {
-            color: darken($primary,20%);
+            color: darken($primary, 20%);
         }
     }
     span.body {
@@ -879,7 +878,6 @@ ul.tags li a:hover {
     right: 0;
     left: 0;
     z-index: 1000;
-    // background: #212121;
     background: #292e35;
 }
 
