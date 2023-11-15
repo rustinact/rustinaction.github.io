@@ -21,7 +21,7 @@ Let's begin with a brief introduction to Rust. Rust is a great choice when perfo
 
 The **Rust Playground** allows us to experiment with Rust without the need to install it locally. If you don't want to install any binaries in your current working environment, then Rust Playground would be the most practical way to begin writing Rust programs right away.
 
-You can access Rust Playground [here](https://play.rust-lang.org/){:target="_blank"}.
+You can access Rust Playground [here <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://play.rust-lang.org/){:target="_blank"}.
 
 It has a number of features, including:
 
