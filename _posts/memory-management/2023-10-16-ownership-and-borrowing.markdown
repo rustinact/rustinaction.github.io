@@ -8,7 +8,7 @@ imageshadow: true
 toc: true
 author: senthil
 date: 2023-10-16 00:00:00 +0530
-tags: [ "ownership-borrowing", "rust", "memory-management", "rust-ownership", "rust-borrowing", "rust-ownership-borrowing" ]
+tags: [ "ownership-borrowing", "memory-management", "ownership", "borrowing", "borrow-checker" ]
 categories: rust
 featured: true
 hidden: false

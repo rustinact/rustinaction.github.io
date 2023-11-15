@@ -27,7 +27,12 @@ post_class: post-template
                 {% endif %}
             </div>            
             <div>
-                <b>{{ author.display_name }}</b>
+                <!-- <b>{{ author.display_name }}</b> -->
+                {% if author.linkedin %}
+                    <a target="_blank" href="{{ author.linkedin }}" style="text-decoration: underline; color: black;"><b>{{ author.display_name }}</b></a>
+                {% else %}
+                    <b>{{ author.display_name }}</b>
+                {% endif %} 
                 {% if author.web %}
                     &nbsp;
                     <a target="_blank" href="{{ author.web }}" style="text-decoration: none;">
@@ -86,7 +91,7 @@ post_class: post-template
             <a class="smoothscroll" href="{{ site.baseurl }}/tags#{{ tag | replace: " ","-" }}">{{ tag }}</a>
         </li>
         {% endfor %}
-    </ul>                    
+    </ul>
 </div>
 
 <!-- Summary -->

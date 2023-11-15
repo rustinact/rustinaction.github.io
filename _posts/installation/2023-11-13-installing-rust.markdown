@@ -6,7 +6,7 @@ summary: 'Rust is a great choice when performance matters and it solves pain poi
 image: assets/images/posts-cover-images/rust-installation.png
 author: senthil
 date: 2023-11-13 00:00:00 +0530
-tags: [ "rust", "rust-language", "rust-installation" ]
+tags: [ "installation" ]
 categories: rust
 featured: false
 hidden: false
