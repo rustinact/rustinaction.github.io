@@ -90,6 +90,9 @@ body {
 }
 a {
     color: darken($primary, 24%);
+    // border-bottom: 1px solid #0039d5;
+    // text-decoration: none;
+    // background-color: transparent;
 }
 img {
     max-width: 100%;
@@ -486,7 +489,6 @@ img, img:hover {
 
 // blog 
 .article-post, .entry-header, .comments, .rating, .authorbox {
-    // max-width: 740px;
     max-width: 800px;
     padding-left: 20px;
     padding-right: 20px;
@@ -499,7 +501,7 @@ img, img:hover {
     line-height: 1.2;
 }
 .entry-featured-image {  
-    width: 940px;  
+    width: 1040px;  
     max-width: 100%;
     text-align: center;
     margin-left: auto;
@@ -860,7 +862,7 @@ ul.tags {
     padding-left: 0;
     margin: 0 0 0 0;
     text-transform: lowercase;
-    color: #174ea6;
+    color: rgb(255, 255, 255);
 }
 ul.tags li {
     display: inline-block;
@@ -868,20 +870,21 @@ ul.tags li {
 }
 ul.tags li a {
     align-items: center;
-    background-color: rgba(76, 73, 203, 0.15);
+    background: rgb(107, 151, 255);
+    color: rgb(255, 255, 255);
     font-family: "Noto Sans Display", Helvetica Neue, Helvetica, Arial, sans-serif;
     border-radius: 5px;
     padding: 5px 5px;
     font-size: small;
 }
 ul.tags li a:hover {
-    background: rgb(107, 151, 255);
-    color: rgb(255, 255, 255);
+    background: rgba(203, 73, 73, 0.15);
+    color: rgb(203, 73, 73);
     text-decoration: none;
 }
 
 // .site-header {
-//     position: fixed;
+//     background-image: url("../images/other-images/pexels-daniel-absi-952670.jpg");
 // }
 
 .site-wrapper {
@@ -896,8 +899,8 @@ ul.tags li a:hover {
     right: 0;
     left: 0;
     z-index: 1000;
-    // background: #292e35;
-    background: rgba(22, 22, 23, .8);
+    // background: rgba(22, 22, 23, .8);
+    background-image: linear-gradient(rgba(22, 22, 23, .9), rgba(22, 22, 23, .5));
 }
 
 .outer {
