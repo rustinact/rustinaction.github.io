@@ -879,7 +879,8 @@ ul.tags li a:hover {
     right: 0;
     left: 0;
     z-index: 1000;
-    background: #081736;
+    // background: #212121;
+    background: #292e35;
 }
 
 .outer {
@@ -900,8 +901,10 @@ ul.tags li a:hover {
     justify-content: space-between;
     align-items: flex-start;
     overflow: hidden;
-    height: 64px;
+    // height: 64px;
+    height: 80px;
     font-size: 1.3rem;
+    align-items: center;
 }
 
 .site-nav-left {
