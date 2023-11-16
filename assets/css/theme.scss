@@ -550,7 +550,8 @@ img, img:hover {
     line-height: 1.2;
 }
 .entry-featured-image {  
-    width: 1040px;  
+    // width: 1040px;
+    width: 100%;  
     max-width: 100%;
     text-align: center;
     margin-left: auto;
@@ -592,10 +593,16 @@ img, img:hover {
     }
 }
 .article-post {    
-    font-size: 18px;
+    // font-size: 18px;
+    font-size: 20px;
     p {
         margin-top: 30px;
         margin-bottom: 30px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;        
     }
     code {
         //color: #e83e8c;
@@ -902,7 +909,18 @@ hr.grey_line {
     width: 100%;
     background: #D6DBDF;
     border: none;
+    // margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+hr {
+    height: 2px;
+    width: 10%;
+    background: $orangy-red;
+    border: none;
     margin-bottom: 50px;
+    margin-top: 50px;
+        
 }
 
 ul.tags {

@@ -43,7 +43,7 @@ In the above pseudocode, we’ve created a variable `x` assigned with a value of
 
 Since both variables `x` and `y` are in the same block or scope, variable `y` has a valid reference that refers to the value of `x`. As a result, variable `y` has a value of `5`.
 
-Take a look at the below pseudocode. As we can see, the scope of `x` is limited to the block in which it’s created. We get into dangling references when we try to access `x` outside of its scope. Dangling reference…? What exactly is it?
+Take a look at the below pseudocode. As we can see, the scope of `x` is limited to the block in which it’s created. We get into **dangling references** when we try to access `x` outside of its scope. Dangling reference…? What exactly is it?
 
 ```text
 // pseudocode #2 - shows invalid reference aka dangling reference
