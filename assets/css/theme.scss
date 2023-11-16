@@ -5,7 +5,8 @@
 $brown: #B59F62;
 $teal: #40FFDC;
 //$blue: #346DDB;
-$blue: #6b97ff;
+// $blue: #6b97ff;
+$blue: #0047f0;
 $black: #111;
 $red: #FF3131;
 $bluish-cyan: #257D98;
@@ -14,6 +15,7 @@ $primary: $blue;
 $dark:    $black;
 $author: #90b4ff;
 $grey-bg: #f2f2f2;
+$grey: #CCC;
 $background-color: #fff;
 $text-color: #17181e;
 
@@ -137,12 +139,7 @@ body {
     //line-height: 27px;
     background: $background-color;
 }
-a {
-    color: darken($primary, 24%);
-    // border-bottom: 1px solid #0039d5;
-    // text-decoration: none;
-    // background-color: transparent;
-}
+
 img {
     max-width: 100%;
     height: auto;
@@ -419,14 +416,13 @@ img, img:hover {
         background: $grey-bg;
         a {
             color: inherit;
-            //font-weight: 700;
             font-weight: 400;
         }
     }
-    .post-date {
-        //float:right;
-        margin-top: 10px;
-    }
+    // .post-date {
+    //     //float:right;
+    //     margin-top: 10px;
+    // }
     .img-thumb {
         object-fit:cover;
         height:240px;
@@ -435,6 +431,11 @@ img, img:hover {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
+}
+.post-date-and-mins-read {
+    font-size: 12px;
+    color: #909090;
+    text-transform: uppercase;
 }
 .firstpage {
     .blog-grid-item:nth-child(1) {
@@ -548,6 +549,7 @@ img, img:hover {
     font-size: 50px;
     font-weight: 700;
     line-height: 1.2;
+    padding-top: 10px;
 }
 .entry-featured-image {  
     // width: 1040px;
@@ -573,11 +575,20 @@ img, img:hover {
         // border: 2px solid darken($author, 0%);
         padding: 2px;
     }
-    .kicker {
-        font-weight: 300;
-        text-transform: uppercase;
-    }
+    // .kicker {
+    //     font-weight: 300;
+    //     text-transform: uppercase;
+    //     a {
+    //         color: $blue;
+    //         padding-bottom: 2px;
+    //         border-bottom: 1px solid $blue;
+    //     }
+    //     a:hover {
+    //         text-decoration: none;
+    //     }
+    // }
 }
+ 
 .authorbox {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -602,18 +613,22 @@ img, img:hover {
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
-        margin-inline-end: 0px;        
+        margin-inline-end: 0px;
+        a {
+            color: $blue;
+            padding-bottom: 2px;
+            border-bottom: 1px solid $primary;
+        }
+        a:hover {
+            text-decoration: none;
+        }                  
     }
     code {
         //color: #e83e8c;
         font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        //color: rgba(0, 0, 0, 0.7);
         color: rgb(199, 37, 78);
-        // color: rgb(55, 71, 79);
         color-scheme: light;
         display: inline;
-        //background-color: rgb(242, 242, 242);
-        //background-color: #EAEDED;
         background-color: rgb(249, 242, 244);
         box-sizing: border-box;
         font-weight: 400;
@@ -713,7 +728,8 @@ img, img:hover {
 .show-search {
     cursor:pointer;
     &:hover {
-        color: darken($primary,20%);
+        // color: darken($primary,20%);
+        color: $blue;
     }
 }
 .bd-search {
@@ -744,7 +760,7 @@ img, img:hover {
         font-size: 20px;
         margin-bottom: 5px;
         &:hover {
-            color: darken($primary, 20%);
+            color: $blue;
         }
     }
     span.body {
@@ -776,6 +792,14 @@ body.active-side {
     border-top: 1px solid $gray-200;
     font-size: 15px;
     background: $grey-bg;
+    a {
+        color: $blue;
+        padding-bottom: 1px;
+        border-bottom: 1px solid $primary;
+    }
+    a:hover {
+        text-decoration: none;
+    }     
 }
 
 //responsive tweaks
@@ -1042,4 +1066,56 @@ ul.tags li a:hover {
 
 header {
     display: block;
+}
+
+sharing {
+    font-size: .8em;
+}
+
+.author-name {
+    text-transform: uppercase;
+    font-size: 15px;
+    a {
+        color: #4d4d4d;
+        padding-bottom: 2px;
+        border-bottom: 1px solid $grey;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.social-connect-icon {
+    a {
+        color: $text-color;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: none;
+        color: $blue;
+    }     
+}
+
+.toc {
+    a {
+        color: $blue;
+        padding-bottom: 2px;
+        border-bottom: 1px solid $primary;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.kicker {
+    font-size: 15px;
+    text-transform: uppercase;
+    a {
+        color: $blue;
+        padding-bottom: 2px;
+        border-bottom: 1px solid $blue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
 }

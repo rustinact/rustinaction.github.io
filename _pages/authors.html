@@ -19,37 +19,29 @@ comments: false
                 <p class="mt-4 mb-0 small text-center">
                     {% if author[1].email %}
                         <a class="d-inline-block mx-1 text-dark" href="mailto:{{ author[1].email }}">
-                            <span style="color:#616A6B;">
+                            <span class="social-connect-icon">
                                 <i class="fa fa-envelope"></i>
                             </span>
                         </a>
                     {% endif %}
                     {% if author[1].web %}
                         <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].web }}">
-                            <span style="color:#616A6B;">
-                                <i class="fa-solid fa-window-maximize"></i>
-                            </span>
+                            <i class="fa-solid fa-window-maximize"></i>
                         </a> 
                     {% endif %}
                     {% if author[1].mastodon %}
                         <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].mastodon }}">
-                            <span style="color:#616A6B;">
-                                <i class="fa-brands fa-mastodon"></i>
-                            </span>
+                            <i class="fa-brands fa-mastodon"></i>
                         </a>
                     {% endif %}                    
                     {% if author[1].twitter %}
                         <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].twitter }}">
-                            <span style="color:#616A6B;">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </span>
+                            <i class="fa-brands fa-x-twitter"></i>
                         </a>
                     {% endif %}
                     {% if author[1].twitter %}
                         <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].instagram }}">
-                            <span style="color:#616A6B;">
-                                <i class="fa-brands fa-square-instagram"></i>
-                            </span>
+                            <i class="fa-brands fa-square-instagram"></i>
                         </a>
                     {% endif %}
                 </p>

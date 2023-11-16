@@ -52,6 +52,8 @@ We may now understand the significance of hooks.
 
 Now let's get into the main topic of what a webhook is.
 
+---
+
 # What is a webhook?
 
 A webhook is a specific type of *hook* used for web applications and services. In web development and application integration, a webhook is a method that *enables one application to send data with another application **in real-time** when specific events occur*. It enables different software systems to communicate with one another by sending data or alerts instantly when a specific event happens. They are commonly used for integrating web applications and services, as they allow fast and seamless (without any interruptions or delays) data exchange. Webhooks are used by a wide variety of web apps to receive small amounts of data from other apps, but webhooks can also be used to trigger automation workflows. A webhook is also called a **web callback** or **HTTP push API**.

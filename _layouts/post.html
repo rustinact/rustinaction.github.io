@@ -9,7 +9,9 @@ post_class: post-template
     <!-- Kicker -->
     {% if page.kicker %}
         <!--<h6 class="kicker">{{ page.kicker }}</h6>-->
-        <a class="smoothscroll" href="{{ site.baseurl }}/categories#{{ page.kicker | downcase | replace: " ","-" }}"><h6 class="kicker">{{ page.kicker }}</h6></a>
+        <span class="kicker">
+            <a href="{{ site.baseurl }}/categories#{{ page.kicker | downcase | replace: " ","-" }}">{{ page.kicker }}</a>
+        </span>
     {% endif %}
 
     <!-- Post Title -->
@@ -27,51 +29,56 @@ post_class: post-template
                 {% endif %}
             </div>            
             <div>
-                <!-- <b>{{ author.display_name }}</b> -->
                 {% if author.linkedin %}
-                    <a target="_blank" href="{{ author.linkedin }}" style="text-decoration: underline; color: black;"><b>{{ author.display_name }}</b></a>
+                    <!-- <a target="_blank" href="{{ author.linkedin }}" style="color: black; border-bottom: 1px solid blue;"><b>{{ author.display_name }}</b></a> -->
+                    <span class="author-name">
+                        <a target="_blank" href="{{ author.linkedin }}"><b>{{ author.display_name }}</b> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </span>
                 {% else %}
                     <b>{{ author.display_name }}</b>
-                {% endif %} 
+                {% endif %}
                 {% if author.web %}
-                    &nbsp;
-                    <a target="_blank" href="{{ author.web }}" style="text-decoration: none;">
-                        <span style="color: #616A6B;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="social-connect-icon">
+                        <a target="_blank" href="{{ author.web }}">
                             <i class="fa-solid fa-window-maximize"></i>
-                        </span>                        
-                    </a>
+                        </a>
+                    </span> 
                 {% endif %}                     
                 {% if author.mastodon %}
                     &nbsp;
-                    <a target="_blank" href="{{ author.mastodon }}" style="text-decoration: none;">
-                        <span style="color: #616A6B;">
+                    <span class="social-connect-icon">
+                        <a target="_blank" href="{{ author.mastodon }}">
                             <i class="fa-brands fa-mastodon"></i>
-                        </span>                         
-                    </a>                
+                        </a>                         
+                    </span>
                 {% endif %}                
                 {% if author.twitter %}
                     &nbsp;
-                    <a target="_blank" href="{{ author.twitter }}" style="text-decoration: none;">
-                        <span style="color: #616A6B;">
+                    <span class="social-connect-icon">
+                        <a target="_blank" href="{{ author.twitter }}">
                             <i class="fa-brands fa-x-twitter"></i>
-                        </span>
-                    </a>                
+                        </a>                         
+                    </span>                    
                 {% endif %}
                 {% if author.instagram %}
                     &nbsp;
-                    <a target="_blank" href="{{ author.instagram }}" style="text-decoration: none;">
-                        <span style="color: #616A6B;">
+                    <span class="social-connect-icon">
+                        <a target="_blank" href="{{ author.instagram }}">
                             <i class="fa-brands fa-square-instagram"></i>
-                        </span>
-                    </a>                
+                        </a>                         
+                    </span>                    
                 {% endif %}                                   
                 <br/> 
-                <span class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time></span>           
-                {% if page.last_modified_at %}
-                    (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
-                {% endif %}
-                {% assign words = content | number_of_words %}
-                &nbsp;-&nbsp;{{ words | divided_by:180 }} Mins Read
+                <span class="post-date-and-mins-read">           
+                    {% if page.last_modified_at %}
+                        Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>
+                    {% else %}
+                        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+                    {% endif %}
+                    {% assign words = content | number_of_words %}
+                    &nbsp;-&nbsp;{{ words | divided_by:180 }} Mins Read
+                </span>
             </div>            
         </div>
     {% endif %}

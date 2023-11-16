@@ -8,6 +8,7 @@ imageshadow: true
 toc: true
 author: senthil
 date: 2023-10-16 00:00:00 +0530
+last_modified_at: 2023-11-18
 tags: [ "ownership-borrowing", "memory-management", "ownership", "borrowing", "borrow-checker" ]
 categories: rust
 featured: true
@@ -412,7 +413,7 @@ The stack frame for this would be as follows: `x = 10`, `y = 10` and `z = 10`. T
 
 Because copying stack memory is cheap and fast, primitive types with a fixed-size are said to have *copy* semantics, whereas complex types *move* ownership, as previously stated. Thus, in this case, the compiler makes the *copies*. 
 
-At this point, the behaviour of *[variable binding](https://en.wikipedia.org/wiki/Name_binding)* is similar to that of other programming languages. To illustrate the rules of ownership, we need a complex data type. 
+At this point, the behaviour of [variable binding <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://en.wikipedia.org/wiki/Name_binding) is similar to that of other programming languages. To illustrate the rules of ownership, we need a complex data type. 
 
 Let's look at data that is stored on the heap and see how Rust understands when to clean it up; the String type is an excellent example for this use case. We'll focus on String's ownership-related behaviour; these principles, however, also apply to other complex data types.
 
