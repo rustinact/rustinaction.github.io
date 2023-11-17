@@ -5,7 +5,7 @@ permalink: /authors
 comments: false
 ---
 
-<div class="list-authors mt-5">
+<div class="list-authors mt-5 social-connect-icon">
 {% for author in site.authors %}   
     <div id="{{ author[1].name }}" class="authorbox position-relative pb-5 pt-5 mb-4 mt-4 border">   
         <div class="row">
@@ -15,14 +15,14 @@ comments: false
                 {% else %}
                 <img  class="author-thumb" src="{{site.baseurl}}/{{ author[1].avatar }}" alt="{{ author.display_name }}">
                 {% endif %}
-
+                <div>
                 <p class="mt-4 mb-0 small text-center">
                     {% if author[1].email %}
-                        <a class="d-inline-block mx-1 text-dark" href="mailto:{{ author[1].email }}">
-                            <span class="social-connect-icon">
+                        <span>
+                            <a class="d-inline-block mx-1 text-dark" href="mailto:{{ author[1].email }}">
                                 <i class="fa fa-envelope"></i>
-                            </span>
-                        </a>
+                            </a>
+                        </span>
                     {% endif %}
                     {% if author[1].web %}
                         <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].web }}">
@@ -45,6 +45,7 @@ comments: false
                         </a>
                     {% endif %}
                 </p>
+                </div>
             </div>
             <div class="col-md-9">
                 <h4>{{ author[1].display_name }}</h4>

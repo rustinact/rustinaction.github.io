@@ -32,10 +32,10 @@ post_class: post-template
                 {% if author.linkedin %}
                     <!-- <a target="_blank" href="{{ author.linkedin }}" style="color: black; border-bottom: 1px solid blue;"><b>{{ author.display_name }}</b></a> -->
                     <span class="author-name">
-                        <a target="_blank" href="{{ author.linkedin }}"><b>{{ author.display_name }}</b> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a target="_blank" href="{{ author.linkedin }}">{{ author.display_name }} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </span>
                 {% else %}
-                    <b>{{ author.display_name }}</b>
+                    {{ author.display_name }}
                 {% endif %}
                 {% if author.web %}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -102,7 +102,7 @@ post_class: post-template
 </div>
 
 <!-- Summary -->
-<div class="article-post">
+<div class="summary">
     {% if page.summary %}
         <p></p>
         <span style="font-weight: 50;">{{ page.summary }}</span>
@@ -111,9 +111,24 @@ post_class: post-template
 </div>
 
 <!-- Draft - Shows writing in progress -->
-<div class="article-post">
+<div class="draft">
     {% if page.draft %}
-        <span style="font-size: 90%; color:#CB4335;"><b>Writing in progress:</b> If you have any suggestions for improving the content or notice any inaccuracies, please email us at <a href="mailto:hello@rustinaction.dev">hello@rustinaction.dev</a>. Thanks!</span>        
+        <div class="row" style="padding: 0; margin: 0;">
+            <div class="col-md-1" style="padding: 5px; margin: 0;">
+                <span class="icon">
+                    <img src="{{site.baseurl}}/assets/images/icons/work-in-progress.png" alt="Work in progress">
+                </span>
+            </div>
+            <div class="col-md-11 align-self-center" style="padding: 5px; margin: 0;">
+                <span>
+                    If you have any suggestions for improving the content or notice any inaccuracies, please email us at <a href="mailto:hello@rustinaction.dev">hello@rustinaction.dev</a>. Thanks!
+                </span>
+            </div>
+        </div>
+        <!-- <span style="font-size: 70%; color:#CB4335;">
+            <img src="{{site.baseurl}}/assets/images/icons/work-in-progress.png" alt="Work in progress" style="width: 50px;">
+            If you have any suggestions for improving the content or notice any inaccuracies, please email us at <a href="mailto:hello@rustinaction.dev">hello@rustinaction.dev</a>. Thanks!
+        </span>         -->
     {% endif %}
 </div>
 

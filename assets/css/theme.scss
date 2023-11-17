@@ -27,20 +27,8 @@ $enable-rounded: false;
 @import 'bootstrap/bootstrap';
 @import 'stars';
 
-/*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
- @font-face {
-    font-family: 'FontAwesome';
-    src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-    font-weight: normal;
-    font-style: normal
-}
-
 @font-face {
-	font-family:BalooDa2;
+	font-family: BalooDa2;
 	src:url(../fonts/balooda2/subset-BalooDa2-ExtraBold.woff2) format("woff2");
 	font-weight:800;
 	font-style:normal;
@@ -48,7 +36,7 @@ $enable-rounded: false;
 }
 
 @font-face{
-	font-family:BalooDa2;
+	font-family: BalooDa2;
     src:url(../fonts/balooda2/subset-BalooDa2-Medium.woff2) format("woff2");
 	font-weight:500;
 	font-style:normal;
@@ -56,7 +44,7 @@ $enable-rounded: false;
 }
 
 @font-face{
-	font-family:BalooDa2;
+	font-family: BalooDa2;
 	src:url(../fonts/balooda2/subset-BalooDa2-Bold.woff2) format("woff2");
 	font-weight:700;
 	font-style:normal;
@@ -64,7 +52,7 @@ $enable-rounded: false;
 }
 
 @font-face{
-	font-family:Roboto;
+	font-family: Roboto;
 	src:url(../fonts/roboto/subset-Roboto-Bold.woff2) format("woff2");
 	font-weight:700;
 	font-style:normal;
@@ -72,7 +60,7 @@ $enable-rounded: false;
 }
 
 @font-face{
-	font-family:Roboto;
+	font-family: Roboto;
 	src:url(../fonts/roboto/subset-Roboto-Regular.woff2) format("woff2");
 	font-weight:400;
 	font-style:normal;
@@ -80,12 +68,19 @@ $enable-rounded: false;
 }
 
 @font-face{
-	font-family:Roboto;
+	font-family: Roboto;
 	src:url(../fonts/roboto/subset-Roboto-Medium.eot);
 	src:url(../fonts/roboto/subset-Roboto-Medium.eot?#iefix) format("embedded-opentype"),url(../fonts/roboto/subset-Roboto-Medium.woff2) format("woff2"),url(../fonts/roboto/subset-Roboto-Medium.woff) format("woff"),url(../fonts/roboto/subset-Roboto-Medium.ttf) format("truetype"),url(../fonts/roboto/subset-Roboto-Medium.svg#Roboto-Medium) format("svg");
 	font-weight:500;
 	font-style:normal;
 	font-display:swap
+}
+
+@font-face {
+    font-family: Agrandir;
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/Agrandir_Regular.woff2") format('woff2');
 }
 
 @font-face {
@@ -403,6 +398,7 @@ img, img:hover {
         }
     }
     .card-text {
+        font-family: Agrandir;
         font-weight: 400;
         font-size: 16px;
         //line-height: 1.2;
@@ -435,7 +431,7 @@ img, img:hover {
 .post-date-and-mins-read {
     font-size: 12px;
     color: #909090;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 }
 .firstpage {
     .blog-grid-item:nth-child(1) {
@@ -710,6 +706,7 @@ img, img:hover {
 
 //share
 .share { 
+    font-family: BalooDa2;
     position: fixed; left: 15px; bottom: 40%; z-index: 1026;
     text-align: center;    
     ul {
@@ -1073,8 +1070,10 @@ sharing {
 }
 
 .author-name {
-    text-transform: uppercase;
+    font-family: Roboto;
+    // text-transform: uppercase;
     font-size: 15px;
+    font-weight: bold;
     a {
         color: #4d4d4d;
         padding-bottom: 2px;
@@ -1087,7 +1086,8 @@ sharing {
 
 .social-connect-icon {
     a {
-        color: $text-color;
+        // color: $text-color;
+        color: #4d4d4d;
         text-decoration: none;
     }
     a:hover {
@@ -1108,6 +1108,7 @@ sharing {
 }
 
 .kicker {
+    font-family: Roboto;
     font-size: 15px;
     text-transform: uppercase;
     a {
@@ -1118,4 +1119,60 @@ sharing {
     a:hover {
         text-decoration: none;
     }
+}
+
+.summary {
+    font-family: Agrandir;
+    font-size: 16px;
+    color: #909090;
+    max-width: 800px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        a {
+            color: $blue;
+            padding-bottom: 2px;
+            border-bottom: 1px solid $primary;
+        }
+        a:hover {
+            text-decoration: none;
+        }                  
+    }
+}
+
+.icon {
+    width: 100%;
+    height: auto;
+}
+ 
+
+.draft {
+    // font-family: Roboto;
+    // font-family: BalooDa2;
+    font-family: Agrandir;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #CB4335;
+    font-size: 20px;
+    line-height: 1;
+    a {
+        color: $blue;
+        padding-bottom: 0px;
+        border-bottom: 1px solid $primary;
+    }
+    a:hover {
+        text-decoration: none;
+    }                  
 }
