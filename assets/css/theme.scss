@@ -430,7 +430,7 @@ img, img:hover {
 }
 .post-date-and-mins-read {
     font-family: Agrandir;
-    font-size: 12px;
+    font-size: 15px;
     color: #909090;
     // text-transform: uppercase;
 }
@@ -1197,8 +1197,6 @@ mark {
     background-color: #F9E79F;
 }
 
-//TODO
-footnotes {
-    font-size: 80% !important;
-    color: red !important;
+.footnotes ol {
+    font-size: 80%;
 }

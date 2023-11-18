@@ -72,12 +72,12 @@ post_class: post-template
                 <br/> 
                 <span class="post-date-and-mins-read">           
                     {% if page.last_modified_at %}
-                        Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>
+                        <i class="fa-regular fa-calendar-days"></i>&nbsp;Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>
                     {% else %}
-                        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+                        <i class="fa-regular fa-calendar-days"></i>&nbsp;<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
                     {% endif %}
                     {% assign words = content | number_of_words %}
-                    &nbsp;-&nbsp;{{ words | divided_by:180 }} Mins Read
+                    -&nbsp;<i class="fa-solid fa-clock"></i>&nbsp;{{ words | divided_by:180 }} Mins Read
                 </span>
             </div>            
         </div>

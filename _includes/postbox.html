@@ -31,8 +31,11 @@
                     <img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
                 </div>
                 <div class="post-name">
-                    <b>{{ author.display_name }}</b><br/>
-                    <span>{{ post.date | date_to_string | date: "%b %-d, %Y" }} - {% include read-time.html %}</span>
+                    <span class="author-name">
+                        <b>{{ author.display_name }}</b>
+                    </span>
+                    <br/>
+                    <span><i class="fa-regular fa-calendar-days"></i>&nbsp;{{ post.date | date_to_string | date: "%b %-d, %Y" }} - <i class="fa-solid fa-clock"></i>{% include read-time.html %}</span>
                 </div>
             </div>
         {% endif %}

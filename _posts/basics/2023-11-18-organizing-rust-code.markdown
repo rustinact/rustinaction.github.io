@@ -122,6 +122,12 @@ edition = "2021"
 
 In this case, Cargo expects that the resulting executable will have the same name as specified in the `name` field of the `[package]` section in `Cargo.toml`. Thus, the executable would be named "my_project". Likewise, Cargo follows a similar convention for library crates (`src/lib.rs`). Cargo passes the crate root files to `rustc` (Rust compiler) to build the library or binary.
 
+## What is crate vs. module?
+
+In Rust, both crates and modules are used for _organizing code_, but they serve different purposes and operate at different levels of granularity within the code structure. A crate is the top-level organizational unit or entity in Rust. <mark>A crate can contain one or more modules</mark>.
+
+A module is a way to organize code _within a crate_. It provides a means of grouping related items, such as _functions_, _structs_, _enums_, and other modules as well.
+
 ---
 
 [^1]: [Packages and Crates <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html#packages-and-crates){:target="_blank"}
