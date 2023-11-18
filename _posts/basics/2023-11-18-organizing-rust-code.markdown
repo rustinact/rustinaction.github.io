@@ -2,7 +2,7 @@
 layout: post
 title:  "Organizing code through packages, crates, and modules in Rust"
 kicker: "Rust Basics"
-summary: "Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages."
+summary: "As we write larger programs with more code, it will become increasingly essential to organize our code. By grouping related functionality, we will make it easier to locate the code that implements a specific feature and to modify its functionality. As our project expands, it's high time to organize our code by splitting it into multiple packages, crates, and modules to have better readability and maintainability. We will look at what's in Rust that helps us organize the code."
 image: assets/images/posts-cover-images/organizing-code-in-rust.jpg
 imageshadow: true
 toc: true
@@ -89,7 +89,7 @@ Here are some key points about crates in Rust:
 - **Multi-file crate**: A crate can also consist of multiple Rust source files, organized into modules.
 - **Dependency management**: Crates can depend on other crates, and these dependencies are specified in the `Cargo.toml` file. The Rust package manager, **Cargo**, is used for building (compiling), testing, and managing dependencies for Rust projects.
 
-> **Note**: A crate is the smallest amount of code that the Rust compiler considers at any given moment. Even if we run the Rust compiler, "rustc," and pass a single source code file, the compiler considers that single file to be a crate. Crates can contain modules, and the modules may be defined in other files that get compiled with the crate.
+> **Note**: A crate is the smallest amount of code that the Rust compiler considers at any given moment. Even if we run the Rust compiler, `rustc`, and pass a single source code file, the compiler considers that single file to be a crate. Crates can contain modules, and the modules may be defined in other files that get compiled with the crate.
 
 ---
 
