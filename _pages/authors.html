@@ -5,7 +5,7 @@ permalink: /authors
 comments: false
 ---
 
-<div class="list-authors mt-5 social-connect-icon">
+<div class="list-authors mt-5">
 {% for author in site.authors %}   
     <div id="{{ author[1].name }}" class="authorbox position-relative pb-5 pt-5 mb-4 mt-4 border">   
         <div class="row">
@@ -15,41 +15,43 @@ comments: false
                 {% else %}
                 <img  class="author-thumb" src="{{site.baseurl}}/{{ author[1].avatar }}" alt="{{ author.display_name }}">
                 {% endif %}
-                <div>
-                <p class="mt-4 mb-0 small text-center">
-                    {% if author[1].email %}
-                        <span>
-                            <a class="d-inline-block mx-1 text-dark" href="mailto:{{ author[1].email }}">
-                                <i class="fa fa-envelope"></i>
+                <!-- <div>
+                    <p class="mt-4 mb-0 small text-center">
+                        {% if author[1].email %}
+                            <span>
+                                <a class="d-inline-block mx-1 text-dark" href="mailto:{{ author[1].email }}">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </span>
+                        {% endif %}
+                        {% if author[1].web %}
+                            <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].web }}">
+                                <i class="fa-solid fa-window-maximize"></i>
+                            </a> 
+                        {% endif %}
+                        {% if author[1].mastodon %}
+                            <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].mastodon }}">
+                                <i class="fa-brands fa-mastodon"></i>
                             </a>
-                        </span>
-                    {% endif %}
-                    {% if author[1].web %}
-                        <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].web }}">
-                            <i class="fa-solid fa-window-maximize"></i>
-                        </a> 
-                    {% endif %}
-                    {% if author[1].mastodon %}
-                        <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].mastodon }}">
-                            <i class="fa-brands fa-mastodon"></i>
-                        </a>
-                    {% endif %}                    
-                    {% if author[1].twitter %}
-                        <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].twitter }}">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                    {% endif %}
-                    {% if author[1].twitter %}
-                        <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].instagram }}">
-                            <i class="fa-brands fa-square-instagram"></i>
-                        </a>
-                    {% endif %}
-                </p>
-                </div>
+                        {% endif %}                    
+                        {% if author[1].twitter %}
+                            <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].twitter }}">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        {% endif %}
+                        {% if author[1].twitter %}
+                            <a target="_blank" class="d-inline-block mx-1 text-dark" href="{{ author[1].instagram }}">
+                                <i class="fa-brands fa-square-instagram"></i>
+                            </a>
+                        {% endif %}
+                    </p>
+                </div> -->
             </div>
             <div class="col-md-9">
                 <h4>{{ author[1].display_name }}</h4>
-                <p class="mt-3 mb-0" style="font-size: 90%">{{ author[1].description }}</p> 
+                <span class="author-description">
+                    <p class="mt-3 mb-0">{{ author[1].description }}</p>
+                </span>
             </div>
         </div> 
     </div>    

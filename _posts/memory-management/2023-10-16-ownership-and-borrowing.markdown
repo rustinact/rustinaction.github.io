@@ -10,7 +10,7 @@ author: senthil
 date: 2023-10-16 00:00:00 +0530
 last_modified_at: 2023-11-18
 tags: [ "ownership-borrowing", "memory-management", "ownership", "borrowing", "borrow-checker" ]
-categories: rust
+categories: ownership-borrowing
 featured: true
 hidden: false
 rating: 4.5
