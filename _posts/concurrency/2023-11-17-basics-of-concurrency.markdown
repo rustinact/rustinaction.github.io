@@ -51,6 +51,8 @@ fn f() {
 
 In the above code, the `thread::spawn` function takes a function as an argument.
 
+
+
 ---
 
 # Frequently asked questions (FAQ)
