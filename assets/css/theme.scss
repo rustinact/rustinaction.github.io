@@ -28,6 +28,14 @@ $enable-rounded: false;
 @import 'stars';
 
 @font-face {
+	font-family: Opensans;
+	src:url(../fonts/Opensans.woff2) format("woff2");
+	font-weight:400;
+	font-style:normal;
+	font-display:swap
+}
+
+@font-face {
 	font-family: BalooDa2;
 	src:url(../fonts/balooda2/subset-BalooDa2-ExtraBold.woff2) format("woff2");
 	font-weight:800;
@@ -126,6 +134,7 @@ $enable-rounded: false;
 body, input, button, select, optgroup, textarea {
     font-family: "Fira Sans", Sans-fallback;
     // font-family: "Roboto";
+    // font-family: Opensans;
     color: $text-color;
     color-scheme: light;
 }
@@ -555,14 +564,15 @@ img, img:hover {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    // margin-top: 50px;
+    // margin-bottom: 50px;
     overflow: hidden;
 }
 .image-shadow {   
     -webkit-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
     -moz-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
     box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
+    border-radius: 16px;
 }
 .entry-header {
     .author-thumb {
@@ -1211,4 +1221,12 @@ mark {
 
 .footnotes ol {
     font-size: 80%;
+}
+
+.featured-image-credits {
+    text-align: center;
+    font-family: BalooDa2;
+    color: #909090;
+    font-size: 80%;
+    margin-bottom: 0;    
 }

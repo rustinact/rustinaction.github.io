@@ -3,8 +3,9 @@ layout: post
 title:  "Introduction to Webhook"
 kicker: "Webhook"
 summary: "A webhook is a method that enables one application to send data with another application in real-time when specific events occur. It enables different software systems to communicate with one another by sending data or alerts instantly when a specific event happens. Webhooks are used by a wide variety of web apps to receive small amounts of data from other applications."
-image: assets/images/posts-cover-images/webhook-introduction.jpg
-imageshadow: true
+image: assets/images/posts-cover-images/webhook-introduction.png
+image-credits: "AI generated image from <a href='https://wepik.com/' target='_blank'>Wepik</a>, one of the engaging projects of its parent company, <a href='https://www.freepik.com/' target='_blank'>freepik</a>."
+# imageshadow: true
 toc: true
 author: senthil
 date: 2023-09-03 00:000:00 +0530
@@ -12,6 +13,7 @@ tags: ["webhook", "callback"]
 categories: webhook
 featured: false
 hidden: false
+draft: true
 --- 
 
 # What is a "hook" in programming?

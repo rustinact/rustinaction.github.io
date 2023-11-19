@@ -3,7 +3,8 @@ layout: post
 title:  "Installing Rust"
 kicker: "Rust Installation"
 summary: 'Rust is a great choice when performance matters and it solves pain points that bother many other languages. For the eighth year in a row, Rust has topped the chart as “the most desired programming language" in Stack Overflow’s annual developer survey, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.'
-image: assets/images/posts-cover-images/rust-installation.png
+image: assets/images/posts-cover-images/rust-installation.jpg
+image-credits: "AI generated image by <a href='https://github.com/Stability-AI/generative-models' target='_blank'>Stability-AI</a>."
 author: senthil
 date: 2023-11-13 00:00:00 +0530
 tags: [ "installation" ]

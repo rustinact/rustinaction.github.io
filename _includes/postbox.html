@@ -35,7 +35,7 @@
                         <b>{{ author.display_name }}</b>
                     </span>
                     <br/>
-                    <span><i class="fa-regular fa-calendar-days"></i>&nbsp;{{ post.date | date_to_string | date: "%b %-d, %Y" }} - <i class="fa-solid fa-clock"></i>{% include read-time.html %}</span>
+                    <span style="color: rgba(23, 24, 30, .5);"><i class="fa-regular fa-calendar-days"></i>&nbsp;{{ post.date | date_to_string | date: "%b %-d, %Y" }} - <i class="fa-solid fa-clock"></i>{% include read-time.html %}</span>
                 </div>
             </div>
         {% endif %}

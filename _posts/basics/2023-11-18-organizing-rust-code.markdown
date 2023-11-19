@@ -3,8 +3,9 @@ layout: post
 title:  "Organizing code through packages, crates, and modules in Rust"
 kicker: "Rust Basics"
 summary: "As we write larger programs with more code, it will become increasingly essential to organize our code. By grouping related functionality, we will make it easier to locate the code that implements a specific feature and to modify its functionality. As our project expands, it's high time to organize our code by splitting it into multiple packages, crates, and modules to have better readability and maintainability. We will look at what's in Rust that helps us organize the code."
-image: assets/images/posts-cover-images/organizing-code-in-rust.jpg
-imageshadow: true
+image: assets/images/posts-cover-images/organizing-code-in-rust.png
+image-credits: "AI generated image from <a href='https://wepik.com/' target='_blank'>Wepik</a>, one of the engaging projects of its parent company, <a href='https://www.freepik.com/' target='_blank'>freepik</a>."
+# imageshadow: true
 toc: true
 author: senthil
 date: 2023-11-18 00:00:00 +0530
