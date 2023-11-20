@@ -20,11 +20,9 @@ For a variety of reasons, the Rust programming language has become increasingly 
 - **Performance**
 - **Zero-cost abstractions**
 
-The language continues to evolve, and its ecosystem is expanding, making it an appealing choice for a wide range of project types. 
+<b>Rust</b> is a great choice when performance matters and it solves pain points that bother many other languages. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it.
 
-<b>Rust</b> is a great choice when performance matters and it solves pain points that bother many other languages. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.
-
-Rust appears to be on a strong road as we head into the future.
+The Rust community continues to grow, the language continues to evolve, and its ecosystem is expanding, making it an appealing choice for a wide range of project types. **With that said, Rust appears to be on a strong road as we head into the future**.
 
 Feel free to get in [touch]({{ site.baseurl }}/contact) with us if you like reading our posts, have feedback for us, or would like to contribute.
  
