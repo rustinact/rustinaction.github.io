@@ -5,7 +5,7 @@ kicker: "Memory Management"
 summary: "Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages."
 image: assets/images/posts-cover-images/rust-ownership-borrowing.jpeg
 image-credits: "Vector image designed by <a href='https://www.freepik.com/' target='_blank'>freepik</a>."
-# imageshadow: true
+imageshadow: true
 toc: true
 author: senthil
 date: 2023-10-16 00:00:00 +0530
@@ -20,6 +20,8 @@ rating: 4.5
 # Overview
 
 The Rust’s *ownership* and *borrowing* might be confusing if we don't grasp what's really going on. This is particularly true when applying a previously learned programming style to a new paradigm; we call this a *paradigm shift*. Ownership is a novel idea, yet tricky to understand at first, but it gets easier the more we work on it.
+
+With ownership and borrowing, Rust doesn't need a "garbage collector," which incurs runtime overhead as the collector must periodically scan the heap to identify and reclaim unused memory.
 
 Before we go further about Rust’s ownership and borrowing, let’s first understand what *memory safety* and *memory leak* are and how programming languages deal with them.
 
@@ -760,9 +762,11 @@ error[E0499]: cannot borrow `s` as mutable more than once at a time
 
 Hopefully, this clarifies the concepts of ownership and borrowing. I also briefly touched on borrow checker, the backbone of ownership and borrowing. As I mentioned at the beginning, ownership is a novel idea that might be difficult to comprehend at first, even for seasoned developers, but gets easier and easier the more you work on it. This is just a rundown of how memory safety is enforced in Rust. I attempted to make this post as easy to understand as possible while yet providing enough information to grasp the concepts. For more details on Rust's ownership feature, check out their online [documentation <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html){:target="_blank"}.
 
-Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the sixth year in a row, [Rust has been Stack Overflow's most loved language <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow. 
+Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.
 
-[According to Rust Survey 2021 Results <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://blog.rust-lang.org/2022/02/15/Rust-Survey-2021.html#:~:text=89%25%20of%20respondents%20agreed%20that,risky%22%20choice%20for%20production%20use.){:target="_blank"}: The year 2021 was undoubtedly one of the most momentous in Rust's history. It saw the founding of the Rust Foundation, the 2021 edition, and a larger community than ever before. Rust appears to be on a strong road as we head into the future.
+For the sixth year in a row, [Rust has been Stack Overflow's most loved language <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow. 
+
+Rust appears to be on a strong road as we head into the future.
 
 Happy learning!
 

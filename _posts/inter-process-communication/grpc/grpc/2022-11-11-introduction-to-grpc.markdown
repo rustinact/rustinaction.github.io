@@ -3,7 +3,9 @@ layout: post
 title:  "Introduction to gRPC"
 kicker: "RPC"
 summary: "gRPC is an open-source, high-performance RPC framework that can run in any environment. gRPC builds on HTTP/2 protocol and the protobuf message-encoding protocol to provide high performance, low-bandwidth communication between applications and services."
-image: assets/images/posts-cover-images/grpc.jpg
+image: assets/images/posts-cover-images/grpc.png
+image-credits: "AI-generated image from <a href='https://wepik.com/' target='_blank'>Wepik</a>, one of the engaging projects of its parent company, <a href='https://www.freepik.com/' target='_blank'>freepik</a>."
+imageshadow: true
 author: senthil
 date: 2022-11-11 00:00:00 +0530
 tags: ["rpc", "remote-procedure-call", "grpc", "inter-process-communication"]

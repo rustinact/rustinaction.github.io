@@ -569,10 +569,19 @@ img, img:hover {
     overflow: hidden;
 }
 .image-shadow {   
-    -webkit-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
-    -moz-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
-    box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
-    border-radius: 16px;
+    // -webkit-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
+    // -moz-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
+    // box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
+    // border-radius: 16px;
+
+    width:calc(100% - 30px) !important;
+	height:calc(100% - 30px) !important;
+  	margin-left:15px;
+  	margin-top:15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 15px 0px;
+    border-radius:10px;
+
+
 }
 .entry-header {
     .author-thumb {
@@ -1201,7 +1210,7 @@ sharing {
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 50px;
     color: #CB4335;
     font-size: 20px;
     line-height: 1;
@@ -1228,5 +1237,5 @@ mark {
     font-family: BalooDa2;
     color: #909090;
     font-size: 80%;
-    margin-bottom: 0;    
+    line-height: 3em;
 }

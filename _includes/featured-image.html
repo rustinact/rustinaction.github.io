@@ -6,11 +6,9 @@
         <img class="featured-image {% if page.imageshadow %} image-shadow {% endif %}" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
     {% endif %}
     {% if page.image-credits %}
-        <div>
-            <span class="featured-image-credits">
-                <p><b>Image Credits: </b>{{ page.image-credits }}</p>
-            </span>
-        </div>
+        <span class="featured-image-credits">
+            <p><b>Image Credits: </b>{{ page.image-credits }}</p>
+        </span>
     {% endif %}
-</div>
+ </div>
 {% endif %}

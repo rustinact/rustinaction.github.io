@@ -4,6 +4,7 @@ title:  "Basics of Rust Concurrency"
 kicker: "Concurrency"
 summary: "Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages."
 image: assets/images/posts-cover-images/rust-concurrency.jpg
+image-credits: "AI-generated image by <a href='https://www.freepik.com/' target='_blank'>freepik</a>."
 imageshadow: true
 toc: true
 author: senthil
