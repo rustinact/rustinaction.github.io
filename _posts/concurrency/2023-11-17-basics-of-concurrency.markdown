@@ -28,7 +28,7 @@ We will look at how threads are spawned in Rust and all the fundamental concepts
 
 # Threads in Rust
 
-Every program is made up of one or more threads. <mark>A thread is the smallest executable unit of a process</mark>. Threads enable us to split a program into multiple tasks, each executed in a separate thread. A program begins with exactly one thread, referred to as the "main thread". This main thread will execute our main function, and can be used to spawn more threads if necessary. In Rust, new threads[^1] are spawned using the `thread::spawn` function from the standard library (`std` module[^2]). This `thread::spawn` function spawns a new **native operating system** thread, aka **kernel-level thread** (**KLT**).
+Every program is made up of one or more threads. <mark>A thread is the smallest executable unit of a process</mark>. Threads enable us to split a program into multiple tasks, each executed in a separate thread. A program begins with exactly one thread, referred to as the "main thread"[^1]. This main thread will execute our main function, and can be used to spawn more threads if necessary. In Rust, new threads[^2] are spawned using the `thread::spawn` function from the standard library (`std` module[^3]). This `thread::spawn` function spawns a new **native operating system** thread, aka **kernel-level thread** (**KLT**).
 
 Consider the following example:
 
@@ -50,9 +50,32 @@ fn f() {
 }
 ```
 
-In the above code, the `thread::spawn` function takes a function as an argument.
+In the above code, the `thread::spawn` function takes a function as an argument. When we call `thread::spawn` function and pass a function name as an argument, we are essentially creating a _new thread_ to execute the specified function concurrently. The function name is used as a way to define the code that will execute in the newly spawned thread. We spawn two threads in the above code that will both execute function `f` as their main function.
 
+> **Thread ID**: The Rust standard library assigns every thread a unique identifier and this identifier is accessible through `Thread::id()`.
 
+If we run our example above several times, we may observe that the output differs between executions. Unexpectedly, some of the output appears to be missing. In this case, the main thread completed the execution of the main function prior to the newly spawned threads completing the execution of their functions. When the main thread of a Rust program terminates, the entire program shuts down, even if other threads are still running.
+
+We can use the `join` method to wait for a thread to complete its execution. The `join` method is available on the `JoinHandle`[^4] returned by the `std::thread::spawn` function when a new thread is created. The `JoinHandle` type has a `join` method, and calling this method blocks the current thread until the associated thread completes.
+
+Let's use `JoinHandle` returned by the spawn function:
+
+```rust
+fn main() {
+    let t1 = thread::spawn(f);
+    let t2 = thread::spawn(f);
+
+    println!("Hello from the main thread.");
+
+    t1.join().unwrap();
+    t2.join().unwrap();
+}
+```
+
+The `.join()` method waits until the thread has finished executing and returns a `std::thread::Result`. If the thread did not successfully finish its function because
+it panicked[^5], this will contain the panic message. The `join` method returns a `Result` that contains the result of the thread's execution or an error is generated if the thread panics. The `unwrap` used here is a method provided by the `Result`. It is used to extract the value from a `Result` when we are confident that the result does not encounter an error.
+
+Running the above updated version of our program will no longer result in truncated output.
 
 ---
 
@@ -70,12 +93,12 @@ The main objective of concurrency is to maximize the CPU by minimizing its idle 
 
 ## What is synchronization in threading?
 
-Symphonization in the context of threading refers to the coordination and control of the execution of multiple threads, with the objective of ensuring conflict-free interactions with shared resources (e.g. files, global variables, etc.) or critical sections[^3] and maintaining data consistency. Synchronization is crucial to prevent issues such as _race conditions_, _data corruption_, and _unexpected behavior_ that can arise when multiple threads access shared resources concurrently.
+Symphonization in the context of threading refers to the coordination and control of the execution of multiple threads, with the objective of ensuring conflict-free interactions with shared resources (e.g. files, global variables, etc.) or critical sections[^6] and maintaining data consistency. Synchronization is crucial to prevent issues such as _race conditions_, _data corruption_, and _unexpected behavior_ that can arise when multiple threads access shared resources concurrently.
 
 Here are some common synchronization mechanisms used in threading:
 
 - **Locks (Mutexes)**: Locks, or mutual exclusions (mutexes), are mechanisms that control access to shared resources by allowing only one thread to acquire the lock at a time, preventing other threads from entering that section until the lock is released.
-- **Semaphores**: Semaphores are synchronization primitives[^4] that maintain a count and allow a specified number of threads to access a critical section simultaneously. Semaphores can be used to control access to shared resources. Every semaphore has a current count, which is greater than or equal to 0. Any thread can decrement the count to lock the semaphore. When the count is attempted to be decremented beyond zero, the calling thread is required to wait until another thread releases the semaphore.
+- **Semaphores**: Semaphores are synchronization primitives[^7] that maintain a count and allow a specified number of threads to access a critical section simultaneously. Semaphores can be used to control access to shared resources. Every semaphore has a current count, which is greater than or equal to 0. Any thread can decrement the count to lock the semaphore. When the count is attempted to be decremented beyond zero, the calling thread is required to wait until another thread releases the semaphore.
 - **Conditions**: Conditions provide a way for threads to coordinate and communicate. They are often used in conjunction with locks. Threads can wait on a condition until a specific condition is met, and when that condition is met, other threads can signal or broadcast to wake up the waiting threads.
 - **Atomic operations**: Atomic operations are operations that are executed in a single, uninterruptible step of execution. Some programming languages and threading libraries provide atomic operations to ensure that certain operations are performed atomically without the need for locks or interference from other threads.
 
@@ -88,10 +111,16 @@ Here are some common synchronization mechanisms used in threading:
    
 ---
 
-[^1]: Rust only includes the native OS (also known as kernel thread) in its `std` module. Rust doesn't have a green threading (also known as user-level or lightweight threading) implementation as part of its standard library (`std` module). Initially, Rust's standard library supported both native and green threading, but later the green thread was removed from the standard library due to the fact that it demanded a larger language runtime. For [here <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md){:target="_blank"} for more information.
+[^1]: In Rust, like in many other programming languages, the "**main thread**" refers to the initial thread of execution that is created when a Rust program starts running. The main thread is the thread in which the `main` function of a Rust program is executed. The `main` function is the entry point of a Rust program. The additional spawned threads can run concurrently with the main thread, allowing programmers to write concurrent and parallel code. When the main thread of a Rust program terminates, the entire program shuts down, even if other threads are still running.
 
-[^2]: A **module** in Rust is a collection of "related" items that includes functions, structs, and even other modules as well.
+[^2]: Rust only includes the native OS thread (also known as kernel thread) in its `std` module. An executing Rust program consists of a collection of native OS threads, each with their own stack and local state. Note that Rust doesn't have a green thread (also known as user-level or lightweight thread) implementation as part of its standard library (`std` module). Initially, Rust's standard library supported both native and green threading, but later the green thread was removed from the standard library due to the fact that it demanded a larger language runtime. For [here <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md){:target="_blank"} for more information.
 
-[^3]: A **critical section** refers to _any segment of code_ that deals with accessing shared resources. As multiple threads can access these shared resources concurrently, it becomes crucial to synchronize their access to prevent race conditions and data inconsistencies.
+[^3]: A **module** in Rust is a collection of "related" items that includes functions, structs, and even other modules as well.
 
-[^4]: A **synchronization primitive** in threading refers to a mechanism provided by a programming language or operating system to enable coordination and synchronization between multiple threads of execution.
+[^4]: In Rust, a `JoinHandle` is a handle that represents a spawned thread. When we spawn a new thread using the `std::thread::spawn` function, it returns a `JoinHandle` that allows us to interact with the thread and, importantly, wait for the thread to finish its execution.
+
+[^5]: A **panic** is the term used to describe the occurrence of a runtime error that causes the program to terminate abruptly. When a panic occurs, the runtime system begins to _unwind_ the stack of the thread where the panic happened. Unwinding involves the cleanup of stacks and resources, such as freeing memory and running destructors for local variables, in reverse order of their creation.
+
+[^6]: A **critical section** refers to _any segment of code_ that deals with accessing shared resources. As multiple threads can access these shared resources concurrently, it becomes crucial to synchronize their access to prevent race conditions and data inconsistencies.
+
+[^7]: A **synchronization primitive** in threading refers to a mechanism provided by a programming language or operating system to enable coordination and synchronization between multiple threads of execution.
