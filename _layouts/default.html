@@ -131,7 +131,6 @@
 
     <!-- Begin Footer -->
     <script>
-        const accessToken = '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';
         const repoOwner = 'rust-lang';
         const repoName = 'rust';
 
@@ -151,11 +150,12 @@
       
         const apiUrlRelease = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
       
-        fetch(apiUrlRelease, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
+        // fetch(apiUrlRelease, {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // })
+        fetch(apiUrlRelease)
             .then(response => response.json())
             .then(data => {
             document.getElementById('current-release').innerText = `${data.tag_name}`;
