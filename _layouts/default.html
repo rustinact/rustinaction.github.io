@@ -136,17 +136,12 @@
 
         // const apiUrlStars = `https://api.github.com/repos/${repoOwner}/${repoName}`;
 
-        // fetch(apiUrlStars, {
-        //     headers: {
-        //     Authorization: `Bearer ${accessToken}`,
-        //     },
-        // })
+        // fetch(apiUrlStars)
         //     .then(response => response.json())
         //     .then(data => {
         //     document.getElementById('repo-stars').innerText = `${data.stargazers_count}`;
         //     })
         //     .catch(error => console.error('Error fetching GitHub repository information:', error));
-
       
         const apiUrlRelease = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
       
@@ -159,7 +154,7 @@
             .then(response => response.json())
             .then(data => {
             document.getElementById('current-release').innerText = `${data.tag_name}`;
-            document.getElementById('release-url').innerHTML = `<a href="${data.html_url}" target="_blank">${data.html_url}</a>`;
+            document.getElementById('release-url').innerHTML = `<a href="${data.html_url}" target="_blank">${data.tag_name}</a>`;
             })
             .catch(error => console.error('Error fetching GitHub release information:', error));
     </script> 
@@ -168,11 +163,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 text-center text-lg-left">
-                    Copyright © {{ site.time | date: "%Y" }} <b>{{ site.name }}</b> | <a href="{{ site.baseurl }}/privacy-policy.html">Privacy Policy</a> | Made with <b>Jekyll</b> and hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.
+                    Copyright © {{ site.time | date: "%Y" }} <b>{{ site.name }}</b> | <a href="{{ site.baseurl }}/privacy-policy.html" target="_blank">Privacy Policy</a> | Made with <b>Jekyll</b> and hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.
                 </div>
                 <div class="col-md-6 col-sm-12 text-center text-lg-right">    
-                    <i class="fa-brands fa-rust"></i> <a target="_blank" href=`<span id="release-url"></span>`><span id="current-release"></span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a> (latest <i class="fa-solid fa-tag"></i>)
-                    <!-- <i class="fa-solid fa-star"></i> <span id="repo-stars"></span> -->
+                    <i class="fa-brands fa-rust"></i> <a href=`<span id="release-url"></span>`><span id="current-release"></span></a>&nbsp;<i class="fa-solid fa-tag"></i>&nbsp;(latest)
+                    <!-- - <i class="fa-solid fa-star"></i> <span id="repo-stars"></span> -->
                 </div>
             </div>
         </div>

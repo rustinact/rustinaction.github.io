@@ -240,7 +240,7 @@ With an ownership model, memory is automatically released (freed) once the varia
 
 ## Borrow checker
 
-Rust implements ownership through the *borrow checker*, a [static analyzer <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://en.wikipedia.org/wiki/Static_program_analysis){:target="_blank"}. The borrow checker is a component in the Rust compiler that keeps track of where data is used throughout the program, and by following ownership rules, it’s able to determine where data needs to be released. Furthermore, the borrow checker ensures that deallocated memory can never be accessed at runtime. It even eliminates the possibility of data races caused by concurrent mutation (modification).
+Rust implements ownership through the *borrow checker*, a [static analyzer](https://en.wikipedia.org/wiki/Static_program_analysis){:target="_blank"}. The borrow checker is a component in the Rust compiler that keeps track of where data is used throughout the program, and by following ownership rules, it’s able to determine where data needs to be released. Furthermore, the borrow checker ensures that deallocated memory can never be accessed at runtime. It even eliminates the possibility of data races caused by concurrent mutation (modification).
 
 ## Ownership rules
 
@@ -418,7 +418,7 @@ The stack frame for this would be as follows: `x = 10`, `y = 10` and `z = 10`. T
 
 Because copying stack memory is cheap and fast, primitive types with a fixed-size are said to have *copy* semantics, whereas complex types *move* ownership, as previously stated. Thus, in this case, the compiler makes the *copies*. 
 
-At this point, the behaviour of [variable binding <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://en.wikipedia.org/wiki/Name_binding) is similar to that of other programming languages. To illustrate the rules of ownership, we need a complex data type. 
+At this point, the behaviour of [variable binding](https://en.wikipedia.org/wiki/Name_binding) is similar to that of other programming languages. To illustrate the rules of ownership, we need a complex data type. 
 
 Let's look at data that is stored on the heap and see how Rust understands when to clean it up; the String type is an excellent example for this use case. We'll focus on String's ownership-related behaviour; these principles, however, also apply to other complex data types.
 
@@ -760,9 +760,9 @@ error[E0499]: cannot borrow `s` as mutable more than once at a time
 
 # Closing remarks
 
-Hopefully, this clarifies the concepts of ownership and borrowing. I also briefly touched on borrow checker, the backbone of ownership and borrowing. As I mentioned at the beginning, ownership is a novel idea that might be difficult to comprehend at first, even for seasoned developers, but gets easier and easier the more you work on it. This is just a rundown of how memory safety is enforced in Rust. I attempted to make this post as easy to understand as possible while yet providing enough information to grasp the concepts. For more details on Rust's ownership feature, check out their online [documentation <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html){:target="_blank"}.
+Hopefully, this clarifies the concepts of ownership and borrowing. I also briefly touched on borrow checker, the backbone of ownership and borrowing. As I mentioned at the beginning, ownership is a novel idea that might be difficult to comprehend at first, even for seasoned developers, but gets easier and easier the more you work on it. This is just a rundown of how memory safety is enforced in Rust. I attempted to make this post as easy to understand as possible while yet providing enough information to grasp the concepts. For more details on Rust's ownership feature, check out their online [documentation](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html){:target="_blank"}.
 
-Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it.
+Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it.
 
 The Rust community continues to grow and it appears to be on a strong road as we head into the future.
 

@@ -131,4 +131,4 @@ A module is a way to organize code _within a crate_. It provides a means of grou
 
 ---
 
-[^1]: [Packages and Crates <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html#packages-and-crates){:target="_blank"}
+[^1]: [Packages and Crates](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html#packages-and-crates){:target="_blank"}

@@ -20,14 +20,17 @@ hidden: false
 
 In programming, a closure is a type of function that has the ability to access and manipulate (modify) variables and parameters that are defined outside its own scope. Closures are also known as **lexical closures** or **function closures**. In other words, closure allows a function to capture and reference variables from its surrounding lexical scope[^1], even after that scope has finished executing. Closures are also referred to as **anonymous functions** or **lambda functions** in some programming languages, including Rust. This closure, or anonymous function, is defined without a name.
 
+---
+
 # Rust Closure
 
 A closure in Rust usually consists of an argument list, given between vertical bars, followed by an expression:
 
 ```rust
+// Define a closure with a single argument. Rust infers the arguument and return types.
 let is_even = |x| x % 2 == 0;
 
-// Define a closure with two integer parameters
+// Define a closure with two integer parameters. Types are explicitly annoted here.
 let add_numbers = |x: i32, y: i32| -> i32 {
     x + y
 };
@@ -51,7 +54,7 @@ assert_eq!(is_even(14), true);
 
 ## Rust's closures are anonymous functions
 
-Having said that befofe, Rust's closures are anonymous functions[^3] we can save in a variable or pass as arguments to other functions.
+Having said that befofe, Rust's closures are **anonymous functions**[^3] we can save in a variable or pass as arguments to other functions.
 
 ## Closures vs. functions
 
@@ -79,7 +82,43 @@ Both closures and functions are used to define blocks of code that can be called
     ```
 - **Syntax**
   - **Function**: Functions are declared using the `fn` keyword, followed by the function name, parameters, return type, and the function body.
-  - **Closure**: Closures, on the other hand, are anonymous function. 
+  - **Closure**: Closures, on the other hand, are anonymous function.
+
+## Closures closely tied to its ownership and borrowing
+
+Rust's closures are closely tied to its [**ownership and borrowing systems**](/ownership-borrowing/2023/ownership-and-borrowing){:target="_blank"}. Ownership and borrowing play a crucial role in enforcing memory safety and preventing data races. The way a closure captures variables from its surrounding environment determines how it interacts with ownership and borrowing:
+
+### By Value (Move)
+
+If a closure captures a variable by value by means of `move` keyword, it takes ownership of that variable. Once a value is moved into the closure, the original variable is no longer accessible in the surrounding scope:
+
+```rust
+let s = String::from("hello");
+
+let closure = move || {
+    println!("{}", s)
+};
+
+// println!("{}", s1); Can't access s1 as it has moved into the clouser
+closure();
+```
+
+### By Reference (Borrowing)
+
+If a closure captures a variable by reference, it borrows the variable. This allows the closure to read or modify the variable without taking ownership. Borrowing is indicated by the absence of the `move` keyword.
+
+```rust
+let s = String::from("hello");
+
+let closure = || {
+    println!("{}", s)
+};
+
+println!("{}", s);  // 's' is accessible since it's not moved to clouse. Instead, closuer borrowed.
+closure();
+println!("{}", s);  // 's' is still accessible after closure call
+
+```
 
 ## Rust's motivation for closure
 
@@ -115,35 +154,6 @@ Both closures and functions are used to define blocks of code that can be called
         counter2(); // Outputs: Count: 2
     }
     ```
-- **Closely tied to its ownership and borrowing**
-  - Rust's closures are closely tied to its [**ownership and borrowing systems** <i class="fa-solid fa-arrow-up-right-from-square"></i>](/ownership-borrowing/2023/ownership-and-borrowing){:target="_blank"}. Ownership and borrowing play a crucial role in enforcing memory safety and preventing data races.
-  - The way a closure captures variables from its surrounding environment determines how it interacts with ownership and borrowing:
-    - **By Value** (Move): If a closure captures a variable by value by means of `move` keyword, it takes ownership of that variable. Once a value is moved into the closure, the original variable is no longer accessible in the surrounding scope:
-
-        ```rust
-        let s = String::from("hello");
-
-        let closure = move || {
-            println!("{}", s)
-        };
-        
-        // println!("{}", s1); Can't access s1 as it has moved into the clouser
-        closure();
-        ```
-    - **By Reference** (Borrowing): If a closure captures a variable by reference, it borrows the variable. This allows the closure to read or modify the variable without taking ownership. Borrowing is indicated by the absence of the `move` keyword.
-
-        ```rust
-        let s = String::from("hello");
-
-        let closure = || {
-            println!("{}", s)
-        };
-        
-        println!("{}", s);  // 's' is accessible since it's not moved to clouse. Instead, closuer borrowed.
-        closure();
-        println!("{}", s);  // 's' is still accessible after closure call
-        
-        ```
 
 ---
 
