@@ -762,11 +762,9 @@ error[E0499]: cannot borrow `s` as mutable more than once at a time
 
 Hopefully, this clarifies the concepts of ownership and borrowing. I also briefly touched on borrow checker, the backbone of ownership and borrowing. As I mentioned at the beginning, ownership is a novel idea that might be difficult to comprehend at first, even for seasoned developers, but gets easier and easier the more you work on it. This is just a rundown of how memory safety is enforced in Rust. I attempted to make this post as easy to understand as possible while yet providing enough information to grasp the concepts. For more details on Rust's ownership feature, check out their online [documentation <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html){:target="_blank"}.
 
-Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow.
+Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the eighth year in a row, Rust has topped the chart as “the most desired programming language” in [Stack Overflow’s annual developer survey <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it.
 
-For the sixth year in a row, [Rust has been Stack Overflow's most loved language <i class="fa-solid fa-arrow-up-right-from-square"></i>](https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-programming-scripting-and-markup-languages){:target="_blank"}, implying that many people who have had the chance to use it have fallen in love with it. The Rust community continues to grow. 
-
-Rust appears to be on a strong road as we head into the future.
+The Rust community continues to grow and it appears to be on a strong road as we head into the future.
 
 Happy learning!
 

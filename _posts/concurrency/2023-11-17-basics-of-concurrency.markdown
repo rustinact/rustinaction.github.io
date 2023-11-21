@@ -62,20 +62,20 @@ Let's use `JoinHandle` returned by the spawn function:
 
 ```rust
 fn main() {
-    let t1 = thread::spawn(f);
-    let t2 = thread::spawn(f);
+    let handle_1 = thread::spawn(f);
+    let handle_2 = thread::spawn(f);
 
     println!("Hello from the main thread.");
 
-    t1.join().unwrap();
-    t2.join().unwrap();
+    handle_1.join().unwrap();
+    handle_2.join().unwrap();
 }
 ```
 
 The `.join()` method waits until the thread has finished executing and returns a `std::thread::Result`. If the thread did not successfully finish its function because
 it panicked[^5], this will contain the panic message. The `join` method returns a `Result` that contains the result of the thread's execution or an error is generated if the thread panics. The `unwrap` used here is a method provided by the `Result`. It is used to extract the value from a `Result` when we are confident that the result does not encounter an error.
 
-Running the above updated version of our program will no longer result in truncated output.
+In the above code, we are storing each thread handle in its respective variable (`handle_1` and `handle_2`). Running the above updated version of our program will no longer result in truncated output.
 
 ---
 
