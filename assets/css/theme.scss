@@ -150,7 +150,8 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    // font-weight: 700;
+    font-weight: 500;
 }
 .site-content {
     //padding-top: 5px;
@@ -174,19 +175,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn {
     min-width: 180px;
 }
-// blockquote {
-//     font-size: 18px;
-//     color: rgba(0, 0, 0, .7);
-//     background: $grey-bg;
-//     cite {
-//         font-weight:700;
-//     }
-//     position: relative;
-//     border-radius: 8px;
-//     border-left: 4px solid rgb(66, 139, 202);
-//     margin: 10px 0;
-//     padding: 2px 10px 2px 10px;
-// }
 
 blockquote p {
     margin: 0;
@@ -196,6 +184,12 @@ blockquote p {
     line-height: 1.5;
     color: rgba(0, 0, 0, .7);
     border-left: 4px solid rgb(66, 139, 202);
+}
+
+/* Alert */
+blockquote.alert::before {
+    content: "\1F6A8"; /* Unicode character for warning symbol */
+    color: #e74c3c; /* Alert color */
 }
 
 // blockquote {
@@ -599,7 +593,7 @@ img, img:hover {
 
 .entry-header {
     .author-thumb {
-        width: 80px;
+        width: 90px;
         border-radius: 50%;
         margin-right: 10px;
         // border: 2px solid darken($author, 0%);
@@ -645,6 +639,11 @@ img, img:hover {
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
+        a {
+            color: $blue;
+            padding-bottom: 2px;
+            border-bottom: 1px solid $blue;
+        }        
         a[target='_blank'] {
             color: $blue;
             padding-bottom: 2px;
@@ -652,8 +651,8 @@ img, img:hover {
         }
         a[target='_blank']:after {
             font-family: 'FontAwesome';
-            content: " \f08e";
-            // margin: 0 3px 0 5px
+            content: "\f08e";
+            margin: 0 1px 0 5px
             // margin-left: 0.25rem;
         }        
         a:hover {
@@ -837,8 +836,8 @@ body.active-side {
     }
     a[target='_blank']:after {
         font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
+        content: "\f08e";
+        margin: 0 1px 0 5px
         // margin-left: 0.25rem;
     }
     a:hover {
@@ -1159,8 +1158,8 @@ sharing {
     }
     a[target='_blank']:after {
         font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
+        content: "\f08e";
+        margin: 0 1px 0 5px
         // margin-left: 0.25rem;
     }   
     a:hover {
@@ -1206,17 +1205,11 @@ sharing {
     // font-family: Agrandir;
     font-size: 15px;
     text-transform: uppercase;
-    a[target='_blank'] {
+    a {
         color: $blue;
         padding-bottom: 2px;
         border-bottom: 1px solid $blue;
     }
-    a[target='_blank']:after {
-        font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
-        // margin-left: 0.25rem;
-    }    
     a:hover {
         text-decoration: none;
     }
@@ -1246,8 +1239,8 @@ sharing {
         }
         a[target='_blank']:after {
             font-family: 'FontAwesome';
-            content: " \f08e";
-            // margin: 0 3px 0 5px
+            content: "\f08e";
+            margin: 0 1px 0 5px
             // margin-left: 0.25rem;
         }   
         a:hover {
@@ -1279,8 +1272,8 @@ sharing {
     }
     a[target='_blank']:after {
         font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
+        content: "\f08e";
+        margin: 0 1px 0 5px
         // margin-left: 0.25rem;
     }   
     a:hover {
@@ -1309,8 +1302,8 @@ mark {
     }
     a[target='_blank']:after {
         font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
+        content: "\f08e";
+        margin: 0 1px 0 5px
         // margin-left: 0.25rem;
     }   
     a:hover {
@@ -1326,8 +1319,8 @@ ol {
     }
     a[target='_blank']:after {
         font-family: 'FontAwesome';
-        content: " \f08e";
-        // margin: 0 3px 0 5px
+        content: "\f08e";
+        margin: 0 1px 0 5px
         // margin-left: 0.25rem;
     }   
     a:hover {

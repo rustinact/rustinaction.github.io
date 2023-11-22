@@ -24,6 +24,12 @@ Typically, in an operating system, multiple processes run concurrently. Operatin
 
 We will look at how threads are spawned in Rust and all the fundamental concepts surrounding them, such as how to safely share data between multiple threads.
 
+<!-- > :alert: We will look at how threads are spawned in Rust and all the fundamental concepts surrounding them, such as how to safely share data between multiple threads.
+>  -->
+
+> **Spawn:**
+> In the context of threading, "spawn" typically refers to the creation of a new thread or process. The term is commonly used to describe the action of initiating a parallel or concurrent execution unit.
+
 ---
 
 # Threads in Rust

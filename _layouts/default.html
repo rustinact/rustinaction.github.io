@@ -60,7 +60,8 @@
                                     <span style="color:#FFFFFF; font-size: 25px;">
                                         <i class="fa-brands fa-github"></i>
                                     </span>
-                                </a> 
+                                </a>
+                                <span style="color: grey; font-size: 25px;"><i class="fa-solid fa-ellipsis-vertical"></i></span>
                                 <a href="https://play.rust-lang.org/" target="_blank" style="text-decoration: none;">
                                     <span style="color:#FFFFFF; font-size: 25px;">
                                         <i class="fa-solid fa-code"></i>
@@ -82,7 +83,16 @@
 
     <!-- Back to top icon/button -->
     <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
-    <script>addBackToTop()</script>    
+    <!-- <script>addBackToTop()</script>     -->
+    <script>addBackToTop({
+        diameter: 40,
+        // backgroundColor: 'rgb(255, 82, 82)',
+        // backgroundColor: 'rgb(255, 49, 49)',
+        backgroundColor: '#ddd',
+        // textColor: '#fff'
+        textColor: 'red'
+        })
+    </script>
 
     <!-- Begin Sidebar Navigation -->
     <div class="sidebar">    
@@ -145,11 +155,6 @@
       
         const apiUrlRelease = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
       
-        // fetch(apiUrlRelease, {
-        //   headers: {
-        //     Authorization: `Bearer ${accessToken}`,
-        //   },
-        // })
         fetch(apiUrlRelease)
             .then(response => response.json())
             .then(data => {
