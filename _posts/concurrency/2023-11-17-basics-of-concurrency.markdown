@@ -24,12 +24,6 @@ Typically, in an operating system, multiple processes run concurrently. Operatin
 
 We will look at how threads are spawned in Rust and all the fundamental concepts surrounding them, such as how to safely share data between multiple threads.
 
-<!-- > :alert: We will look at how threads are spawned in Rust and all the fundamental concepts surrounding them, such as how to safely share data between multiple threads.
->  -->
-
-> **Spawn:**
-> In the context of threading, "spawn" typically refers to the creation of a new thread or process. The term is commonly used to describe the action of initiating a parallel or concurrent execution unit.
-
 ---
 
 # Threads in Rust
@@ -60,16 +54,20 @@ In the above code, the `thread::spawn` function takes a function as an argument.
 
 > **Thread ID**: The Rust standard library assigns every thread a unique identifier and this identifier is accessible through `Thread::id()`.
 
-If we run our example above several times, we may observe that the output differs between executions. Unexpectedly, some of the output appears to be missing. In this case, the main thread completed the execution of the main function prior to the newly spawned threads completing the execution of their functions. When the main thread of a Rust program terminates, the entire program shuts down, even if other threads are still running.
+If we run our example above several times, we may observe that the output differs between executions. Unexpectedly, some of the output appears to be missing. Why does a portion of the output appear to be missing? Let's look at what's happening in this case. Here, the main thread completed the execution of the main function prior to the newly spawned threads completing the execution of their functions. When the main thread of a Rust program terminates, the entire program shuts down, even if other threads are still running. So how do we overcome this? It is straightforward: we need to set the main thread to wait until the completion of the execution of all spawned threads.
 
-We can use the `join` method to wait for a thread to complete its execution. The `join` method is available on the `JoinHandle`[^4] returned by the `std::thread::spawn` function when a new thread is created. The `JoinHandle` type has a `join` method, and calling this method blocks the current thread until the associated thread completes.
+## Setting the main thread to wait until...
+
+We can use the `join` method from the `std` library to wait for a thread to complete its execution. The `join` method is available on the `JoinHandle`[^4] returned by the `std::thread::spawn` function when a new thread is created. In other words, the `JoinHandle` type has a `join` method, and calling this method blocks the current thread until the associated thread completes. Having said that, `join` blocks the main thread until the spawned thread completes.
+
+The "current thread" refers to the thread that is actively running the code at a given moment. Typically, the main thread is the thread that starts the program's execution. Therefore, the current thread typically refers to the main thread. The "associated thread," on the other hand refers to the thread that was spawned using `thread::spawn`. When we spawn a new thread using `thread::spawn`, it runs concurrently with the main thread or any other threads that may be executing.
 
 Let's use `JoinHandle` returned by the spawn function:
 
 ```rust
 fn main() {
-    let handle_1 = thread::spawn(f);
-    let handle_2 = thread::spawn(f);
+    let handle_1 = std::thread::spawn(f);
+    let handle_2 = std::thread::spawn(f);
 
     println!("Hello from the main thread.");
 
@@ -78,10 +76,21 @@ fn main() {
 }
 ```
 
-The `.join()` method waits until the thread has finished executing and returns a `std::thread::Result`. If the thread did not successfully finish its function because
-it panicked[^5], this will contain the panic message. The `join` method returns a `Result` that contains the result of the thread's execution or an error is generated if the thread panics. The `unwrap` used here is a method provided by the `Result`. It is used to extract the value from a `Result` when we are confident that the result does not encounter an error.
+The `.join()` method waits until the thread has finished executing and returns a `std::thread::Result`. If the thread did not successfully finish its function because it panicked[^5], this will contain the panic message. The `join` method returns a `Result` that contains the result of the thread's execution or an error is generated if the thread panics. The `unwrap` used here is a method provided by the `Result`. It is used to extract the value from a `Result` when we are confident that the result does not encounter an error.
 
 In the above code, we are storing each thread handle in its respective variable (`handle_1` and `handle_2`). Running the above updated version of our program will no longer result in truncated output.
+
+Rather than passing the name of a function to `std::thread::spawn`, it’s more common to pass a **closure** containing the code to be executed in that thread, as shown below:
+
+```rust
+// Spawn a new thread
+let handle = thread::spawn(|| {
+    // Code to be executed in the new thread
+    for i in 1..=5 {
+        println!("Thread: {}", i);
+    }
+});
+```
 
 ---
 
@@ -123,7 +132,7 @@ Here are some common synchronization mechanisms used in threading:
 
 [^3]: A **module** in Rust is a collection of "related" items that includes functions, structs, and even other modules as well.
 
-[^4]: In Rust, a `JoinHandle` is a handle that represents a spawned thread. When we spawn a new thread using the `std::thread::spawn` function, it returns a `JoinHandle` that allows us to interact with the thread and, importantly, wait for the thread to finish its execution.
+[^4]: The `thread::spawn` function returns a `JoinHandle`, which is a handle (reference or identifier) that represents a spawned thread. When we spawn a new thread using the `std::thread::spawn` function, it returns a `JoinHandle` that allows us to interact with the spawned thread and, importantly, wait for the thread to finish its execution and to obtain its result as well.
 
 [^5]: A **panic** is the term used to describe the occurrence of a runtime error that causes the program to terminate abruptly. When a panic occurs, the runtime system begins to _unwind_ the stack of the thread where the panic happened. Unwinding involves the cleanup of stacks and resources, such as freeing memory and running destructors for local variables, in reverse order of their creation.
 

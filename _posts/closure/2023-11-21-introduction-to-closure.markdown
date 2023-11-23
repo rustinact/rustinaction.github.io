@@ -88,7 +88,7 @@ Both closures and functions are used to define blocks of code that can be called
 
 Rust's closures are closely tied to its [**ownership and borrowing systems**](/ownership-borrowing/2023/ownership-and-borrowing){:target="_blank"}. Ownership and borrowing play a crucial role in enforcing memory safety and preventing data races. The way a closure captures variables from its surrounding environment determines how it interacts with ownership and borrowing:
 
-### By Value (Move)
+### By Value (Move) aka move closure
 
 If a closure captures a variable by value by means of `move` keyword, it takes ownership of that variable. Once a value is moved into the closure, the original variable is no longer accessible in the surrounding scope:
 
