@@ -98,13 +98,17 @@ let handle = thread::spawn(|| {
 
 ## How does concurrency differ from parallelism?
 
-**Concurrency** refers to the ability of multiple tasks to be executed independently, making progress in an _overlapping time period_ but not necessarily simultaneously. It's important to be noted that concurrency is about managing multiple tasks and making progress on each task, but _not necessarily at the same time_. One of the tasks can begin before the preceding or previous one is completed; however, both of these tasks won’t be running at the same time. A single processor is used for running the tasks in the concurrency model.
+**Concurrency** refers to the ability of multiple tasks to be executed independently, making progress in an _overlapping time period_ but not necessarily simultaneously. It's important to be noted that concurrency is about managing multiple tasks and making progress on each task, but _not necessarily at the same time_, meaning, _tasks are not running simultaneously or in parallel_.  One of the tasks can begin before the preceding or previous one is completed; however, both of these tasks won’t be running at the same time. A single processor is used for running the tasks in the concurrency model.
 
 Under the hood, a CPU can work on only one task at a time. If it is assigned multiple tasks, it simply switches between these tasks. Since this switching is so fast and seamless, it gives us a sense that these tasks are running in parallel. However, they are not parallel.
 
 The main objective of concurrency is to maximize the CPU by minimizing its idle time
 
 **Parallelism** is the ability to execute independent tasks of a program _simultaneously_ (at the same moment in time). Parallelism takes advantage of multi-core processors. Tasks can run "simultaneously" across multiple cores.
+
+## What is asynchronous programming?
+
+Asynchronous programming is a programming paradigm (approach) that allows tasks to proceed independently without waiting for each other. The program initiates asynchronous tasks and proceeds with the execution of other tasks in anticipation of their (aync tasks) completion. It's important to understand that _asynchronous tasks can run concurrently or sequentially_, but the program does not wait for the completion of each task before proceeding. It's often used for I/O-bound tasks to avoid blocking.
 
 ## What is synchronization in threading?
 
