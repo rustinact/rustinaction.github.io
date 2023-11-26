@@ -61,7 +61,19 @@ todo
 
 # Concurrency
 
-todo
+## How does a kernel-level thread differ from a user-level thread?
+
+**Kernel-level threads**, aka native threads, are managed by the operating system kernel. The operating system is responsible for scheduling and context switching. It's heavier than user-level threads in terms of overhead. It's better suited for scenarios requiring parallelism and direct interaction with system services. 
+
+**Disadvantages**
+
+- Relatively limited number we can create!
+
+**User-level threads**, also known as lightweight threads or green threads, are managed entirely by a user-level thread library or runtime. The operating system kernel is unaware of these threads. It's lightweight and have lower overhead compared to kernel-level threads. Scheduling and context switching are performed by the user-level thread library or runtime. It's efficient for scenarios where a large number of threads need to be managed. Since it's lighter weight, we can create many more green threads.
+
+**Disadvantages**
+
+- Stack growth can cause issues!
 
 ---
 
