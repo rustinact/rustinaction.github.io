@@ -32,6 +32,30 @@
 </script>
 {% endif %}
 
+<script>
+    const repoOwner = 'rust-lang';
+    const repoName = 'rust';
+
+    // const apiUrlStars = `https://api.github.com/repos/${repoOwner}/${repoName}`;
+
+    // fetch(apiUrlStars)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //     document.getElementById('repo-stars').innerText = `${data.stargazers_count}`;
+    //     })
+    //     .catch(error => console.error('Error fetching GitHub repository information:', error));
+  
+    const apiUrlRelease = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
+  
+    fetch(apiUrlRelease)
+        .then(response => response.json())
+        .then(data => {
+        document.getElementById('current-release').innerText = `${data.tag_name}`;
+        document.getElementById('release-url').innerHTML = `<a href="${data.html_url}" target="_blank">${data.tag_name}</a>`;
+        })
+        .catch(error => console.error('Error fetching GitHub release information:', error));
+</script> 
+
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body class="line-numbers">
     <div class="site-wrapper">
@@ -66,7 +90,7 @@
                                     <span style="color:#FFFFFF; font-size: 25px;">
                                         <i class="fa-solid fa-code"></i>
                                     </span>
-                                </a>                                                                   
+                                </a>
                             </div>
                         </div>
                     </nav>
@@ -137,19 +161,10 @@
     </div>
 
     <!-- Begin Footer -->
-    <script>
+    <!-- <script>
         const repoOwner = 'rust-lang';
         const repoName = 'rust';
 
-        // const apiUrlStars = `https://api.github.com/repos/${repoOwner}/${repoName}`;
-
-        // fetch(apiUrlStars)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //     document.getElementById('repo-stars').innerText = `${data.stargazers_count}`;
-        //     })
-        //     .catch(error => console.error('Error fetching GitHub repository information:', error));
-      
         const apiUrlRelease = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
       
         fetch(apiUrlRelease)
@@ -159,7 +174,7 @@
             document.getElementById('release-url').innerHTML = `<a href="${data.html_url}" target="_blank">${data.tag_name}</a>`;
             })
             .catch(error => console.error('Error fetching GitHub release information:', error));
-    </script> 
+    </script>  -->
 
     <footer class="footer">
         <div class="container">

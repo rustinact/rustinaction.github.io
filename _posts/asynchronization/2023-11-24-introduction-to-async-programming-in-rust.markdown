@@ -147,7 +147,7 @@ It is not always possible to combine synchronous and asynchronous code freely. F
 
 `async/.await` is Rust's built-in tool or keywords for writing asynchronous functions that look like synchronous code.
 
-### `async` Keyword
+### async Keyword
 
 - The `async` keyword is used to define asynchronous functions.
 - An async function returns a `Future`, which represents a computation or value that may not have been completed yet but will be available later in time.
@@ -178,7 +178,7 @@ It is not always possible to combine synchronous and asynchronous code freely. F
     futures = "0.3"
     ```
 
-### `await` Keyword
+### .await Keyword
 
 - The `await` keyword is used within an asynchronous function to suspend its execution until the result of a `Future` is ready.
 - The `await` keyword can only be used inside functions marked as `async`.
@@ -312,7 +312,7 @@ fn main() -> Results<()> {
 
 Error handling in asynchronous code involves using the `Result` type and handling errors with the `?` operator.
 
-```rust[class="line-numbers"]
+```rust
 async fn process_file() -> io::Result<()> {
     let contents = read_file_contents().await?;  // assume read_file_contents() reads file
     // Process the file contents
