@@ -4,8 +4,6 @@
 
 $brown: #B59F62;
 $teal: #40FFDC;
-//$blue: #346DDB;
-// $blue: #6b97ff;
 $blue: #0047f0;
 $black: #111;
 $red: #FF3131;
@@ -18,7 +16,6 @@ $grey-bg: #f2f2f2;
 $grey: #CCC;
 $background-color: #fff;
 $text-color: #17181e;
-
 $enable-rounded: false;
 
 @import "bootstrap/functions";
@@ -635,11 +632,11 @@ img, img:hover {
     p {
         margin-top: 30px;
         margin-bottom: 30px;
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
+        // display: block;
+        // margin-block-start: 1em;
+        // margin-block-end: 1em;
+        // margin-inline-start: 0px;
+        // margin-inline-end: 0px;
         a {
             color: $blue;
             padding-bottom: 2px;
@@ -654,33 +651,45 @@ img, img:hover {
             font-family: 'FontAwesome';
             content: "\f08e";
             margin: 0 1px 0 5px
-            // margin-left: 0.25rem;
         }        
         a:hover {
             text-decoration: none;
         }
     } 
+    // code {
+    //     font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    //     color: rgb(199, 37, 78);
+    //     color-scheme: light;
+    //     display: inline;
+    //     background-color: rgb(249, 242, 244);
+    //     box-sizing: border-box;
+    //     font-weight: 400;
+    //     line-height: 20.992px;
+    // }
+    // code[class*="language-"], pre[class*="language-"] {
+    //     font-size: 16px;
+    //     margin-bottom: 30px;
+    //     background: #272822;
+    //     color: #f8f8f2;
+    //     border-radius: 8px;
+    //     text-shadow: none;
+    // }
     code {
-        //color: #e83e8c;
-        font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        color: rgb(199, 37, 78);
-        color-scheme: light;
-        display: inline;
-        background-color: rgb(249, 242, 244);
-        box-sizing: border-box;
-        font-weight: 400;
-        line-height: 20.992px;
+        font-size: 15px;
+        color: $red;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 0.1em 0.25em;
+        border-radius: 0.375rem;
+        max-width: 100%;
     }
     code[class*="language-"], pre[class*="language-"] {
-        font-size: 16px;
-        margin-bottom: 30px;
-        //background: #fff;
-        background: #272822;
-        //color: inherit;
-        color: #f8f8f2;
+        font-size:15px;
+        margin-bottom:30px;
+        background: #08090a;
+        // color:inherit;
+        color: $red;
         border-radius: 8px;
-        text-shadow: none;
-    }
+    }    
     div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
         margin-right: 2px;
         margin-left: 2px;

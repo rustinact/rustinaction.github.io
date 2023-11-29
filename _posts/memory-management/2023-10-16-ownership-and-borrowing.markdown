@@ -613,7 +613,7 @@ Deref of y=5
 
 Here, the `y` variable *borrows* the number *owned* by variable `x`, while `x` still owns the value. We call `y` a reference to `x`. The borrow ends when `y` goes out of scope, and because `y` does not own the value, it is not destroyed. To borrow a value, take a reference by the `&` operator. The p formatting, `{:p}` output as a memory location presented as hexadecimal.
 
-> **Dereference:** In the above code, "*" (i.e., an asterisk) is a *dereference* operator that operates on a reference variable. This dereferencing operator allows us to get the value stored in the memory address of a pointer.
+> **Dereference:** In the above code, "\*" (i.e., an asterisk) is a *dereference* operator that operates on a reference variable. This dereferencing operator allows us to get the value stored in the memory address of a pointer.
 
 Let's look at how a function can use a value without taking ownership through borrowing:
 

@@ -19,15 +19,37 @@ draft: true
 
 # What is asynchronous programming? 
 
-Asynchronous programming is a programming paradigm[^1] that allows **multiple tasks to run independently without waiting for each other** (in a non-blocking manner). This promotes the efficient management of I/O operations that often involve waiting for external events, such as interacting with databases, etc.
+Asynchronous programming is a form of **concurrency programming model** that allows **multiple tasks to run independently without waiting for each other** (in a non-blocking manner). 
+
+This promotes: 
+
+- **Efficient utilization of resources** 
+- **Efficient management I/O operations** that often involve waiting for external events 
+- **Improved responsiveness**, especially in scenarios where tasks involve waiting for I/O operations, such as reading from or writing to a file, handling user input, etc.
 
 **Synchronous programming**, aka **sequential programming**, is more widely adopted, mature, and "standardized" than concurrent programming. In traditional **synchronous programming**, aka **sequential programming**, when a program encounters an I/O operation (such as reading from a file or interacting with a database), it typically blocks and waits for the operation to complete before moving on to the next instruction. During this blocking period, the entire program may remain idle, potentially leading to insufficient utilization of resources.
 
-Asynchronous programming, on the other hand, allows the program to continue executing other tasks _while running I/O operations in the background_. Upon completion of the I/O operation, the program is notified, and the appropriate callback or continuation is executed. Asynchronous programming enables our program to start a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until that task has finished.
+Asynchronous programming, on the other hand, allows the program to continue executing other tasks _while running tasks in the background, especially I/O operations_. Upon completion of the background-running task, the program is notified, and the appropriate callback or continuation is executed. Asynchronous programming enables our program to start a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until that task has finished.
 
 The asynchronous programming model is typically more complicated for the developer but results in a faster runtime for I/O-heavy workloads.
 
 <mark>Asynchronous programming pertains to situations in which the execution of control does not adhere to a predetermined order. Events outside the control of the program itself impact the sequence of what is executed. Those events are typically related to I/O, such as a device driver signaling that it is ready, etc.</mark>
+
+## Async vs. pure parallelism
+
+Async and parallelism are related concepts within the domain of concurrent programming, but they address different aspects of handling tasks concurrently.
+
+### Async programming
+
+**Async programming** allows tasks to proceed independently without waiting for the completion of others. It is particularly useful for handling I/O-bound operations where a program can efficiently utilize its time while waiting for data. <mark>Async programming does not necessarily imply parallelism.</mark> Tasks are designed to overlap in time, but they may not execute simultaneously on multiple processors. The objective is to prevent idle time by allowing the program to continue with other tasks while waiting for certain operations to be completed.
+
+### Parallelism
+
+Parallelism, on the other hand, involves the simultaneous execution of multiple tasks on multiple processors or CPU cores. The objective is to improve overall performance by dividing a larger task into smaller subtasks that can be executed concurrently "at the same time". Parallelism aims to achieve true simultaneous execution. It is commonly used in CPU-bound tasks where computations can be divided to be processed concurrently at the same time.
+
+While async programming and parallelism are distinct concepts, they can be combined in certain scenarios. For example, a system might use asynchronous programming to handle I/O-bound tasks efficiently and parallelism to process CPU-bound tasks concurrently. Async programming is more focused on task coordination and efficient use of resources, while parallelism is geared toward maximizing computational throughput by leveraging multiple processors or CPU cores.
+
+> "***Threads are for working in parallel and async is for waiting in parallel.***" - Quote from the internet.
 
 ## A glossary of terms relating to concurrency
 
@@ -89,19 +111,19 @@ Developing a fast and reactive application requires the use of asynchronous prog
   - Instead, runtimes ([Tokio](https://tokio.rs/){:target="_blank"}, etc.) are provided by community maintained crates.
 - **Both single- and multithreaded runtimes** are available in Rust, which have different strengths and weaknesses.
 
-## Async vs threads in Rust
+## Async vs. threads in Rust
 
 The primary alternative to async in Rust is using OS threads, either directly through `std::thread` or indirectly through a thread pool.
 
 **OS threads** are suitable for a small number of tasks, since threads come with CPU and memory overhead. Spawning and switching between threads is quite expensive as even idle threads consume system resources. A thread pool library can help mitigate some of these costs, but not all. Threads let you reuse existing synchronous code without significant code changes. It is also possible to modify the priority of a thread in certain operating systems, which is beneficial for drivers and other applications that are sensitive to latency.
 
-**Async** provides significantly reduced CPU and memory overhead, especially for workloads with a large amount of IO-bound tasks. Asynchronous programming is not superior than threads, but different. When performance does not require asynchronous operations, threads are frequently a more straightforward alternative.
+**Async** provides significantly reduced CPU and memory overhead, especially for workloads with a large amount of IO-bound tasks. <mark>Asynchronous programming is not superior than threads, but different</mark>. When performance does not require asynchronous operations, threads are frequently a more straightforward alternative.
 
 ## Language and external library support for async programming in Rust
 
 Although Rust itself provides support for asynchronous programming, the majority of async applications rely on the functionality offered by community crates. Therefore, a combination of language features and library support is required:
 
-- The `Future` trait (`std::future::Future`) is a fundamental part of the asynchronous programming model offered by the standard library in Rust.
+- The `Future` trait (`std::future::Future`) is a fundamental part of the asynchronous programming model *offered by the standard library in Rust*. Usually, we don't have to interact with `Future` directly too often, but it serves as a fundamental component of the entire model. The `poll` method allows checking whether the future has completed, is still pending, or encountered an error.
 
     ```rust
     pub trait Future {
@@ -111,9 +133,9 @@ Although Rust itself provides support for asynchronous programming, the majority
         fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>;
     }
     ```
-The `poll` method allows checking whether the future has completed, is still pending, or encountered an error.
 
-- The `async/await` syntax is supported directly by the Rust compiler.
+- The `async` keyword is supported directly by the Rust compiler.
+- The `.await` syntax is also supported directly by the Rust compiler.
 - Many utility types, macros and functions are provided by the `futures` crate and they can be used in any async Rust application.
 - Execution of async code, IO and task spawning are provided by **async runtimes**, such as **Tokio** and **async-std**. Most async applications, and some async crates, depend on a specific runtime.
 
@@ -128,11 +150,21 @@ It is not always possible to combine synchronous and asynchronous code freely. F
 ### `async` Keyword
 
 - The `async` keyword is used to define asynchronous functions.
-- An asynchronous function returns a `Future`, which represents a computation that may not have been completed yet but will be available later in time.
-- Asynchronous functions are defined using the `async` fn syntax.
+- An async function returns a `Future`, which represents a computation or value that may not have been completed yet but will be available later in time.
+- Asynchronous functions are defined using the `async fn` syntax.
   
     ```rust
-    async fn async_function() { /* Asynchronous code here */ }
+    // It's syntactic sugar
+    async fn async_function() -> u32 { 
+      /* Asynchronous code here */ 
+      50
+    }
+
+    // Desyntactic sugar
+    fn async_function() -> impl Future<Output = u32> { 
+      /* Asynchronous code here */ 
+      async(50)
+    }
     ```
 
   The value returned by `async fn` is a `Future`. 
@@ -150,6 +182,9 @@ It is not always possible to combine synchronous and asynchronous code freely. F
 
 - The `await` keyword is used within an asynchronous function to suspend its execution until the result of a `Future` is ready.
 - The `await` keyword can only be used inside functions marked as `async`.
+- `await` returns control to the executor so that it may proceed. The executor (3rd party) might run the task to completion.
+- The `await` syntax allows us to describe the "cooperative scheduling" of tasks.
+
 
     ```rust
     async fn example() -> i32 {
@@ -165,7 +200,9 @@ For any action to take place, the `Future` needs to be run on an executor.
 
 ## future crate
 
-The `futures` crate in Rust is a foundational library for working with asynchronous programming. The `futures` crate defines the `Future` trait, which is a fundamental building block for asynchronous programming. The `futures` crate is often used in conjunction with the `async/.await` syntax. Asynchronous functions using the `async/await` syntax return types that implement the `Future` trait, and the `futures` crate provides utilities to work with these async functions. It provides a variety of *combinators* and *utility functions*, allowing developers to *chain*, *map*, and *compose* asynchronous operations. Also, this crate introduces abstractions for working with **streams** (sequences of values over time) and **sinks** (consumers of values). The `futures` crate is designed to be executor-agnostic. It doesn't prescribe a specific runtime or executor, allowing developers to use it with various asynchronous runtimes, such as **Tokio**, **async-std**, or others.
+The `futures` crate in Rust is a foundational library for working with asynchronous programming. The `futures` crate defines the `Future` trait, which is a fundamental building block for asynchronous programming. The `futures` crate is often used in conjunction with the `async/.await` syntax. Asynchronous functions using the `async/await` syntax return types that implement the `Future` trait, and the `futures` crate provides utilities to work with these async functions. It provides a variety of *combinators* and *utility functions*, allowing developers to *chain*, *map*, and *compose* asynchronous operations. 
+
+Also, this crate introduces abstractions for working with **streams** (sequences of values over time) and **sinks** (consumers of values). The `futures` crate is designed to be executor-agnostic. It doesn't prescribe a specific runtime or executor, allowing developers to use it with various asynchronous runtimes, such as **Tokio**, **async-std**, or others.
 
 ## Future trait
 
@@ -191,17 +228,107 @@ Having said that, before we can make use of the async syntax, a runtime must be 
 - [Tokio](https://tokio.rs/){:target="_blank"}: A popular async ecosystem with HTTP, gRPC, and tracing frameworks.
 - [async-std](https://docs.rs/async-std/){:target="_blank"}: A crate that provides asynchronous counterparts to standard library components.
 
-As of the writing of this post, the Tokio library is the most widely used runtime. Let's use Tokio runtime.
+## Runtime's role in asynchronous programming
 
-## Tokio's role in asynchronous programming
+As of the writing of this post, the Tokio library is the most widely used runtime. Let's use Tokio runtime.
 
 Tokio is an *asynchronous runtime* for the Rust programming language. The need for an asynchronous runtime in Rust arises from the desire to: 
 
-- Scheduling and managing the execution of asynchronous tasks efficiently.
+- Scheduling and managing the execution of asynchronous tasks efficiently. It includes an executor, a task scheduler, and various utilities.
 - Handling I/O operations concurrently
 - Providing a multi-threaded runtime for the execution of asynchronous code
 
 When writing asynchronous code, we cannot use the ordinary blocking APIs provided by the Rust standard library, and must instead use asynchronous versions of them. These alternate versions are provided by Tokio, mirroring the API of the Rust standard library where it makes sense.
+
+## Async programming with Tokio
+
+**Tokio** is a resilient Rust asynchronous runtime. The fundamental building block of Tokio is its asynchronous task scheduling and execution model. Tokio's event loop efficiently manages task scheduling and ensures optimal utilization of CPU cores and minimizes context-switching overhead.
+
+We can: 
+
+- Wait for multiple tasks to complete with `join`
+- Select the first completed task with `select` 
+- Race tasks against each other with `race`
+
+First thing first: Add the Tokio crate to our `Cargo.toml` file's dependencies section:
+
+```toml
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+```
+
+Choose the appropriate version of Tokio. The `features = ["full"]` ensures that we get the full set of features provided by Tokio.
+
+Here’s how we can use the async/await syntax in our Rust programs with Tokio:
+
+```rust
+use tokio::time::sleep;
+use std::time::Duration;
+
+#[tokio::main]  // Annotate main function to make it async
+async fn main() { 
+    hello_world().await;
+}
+
+async fn hello_world() {
+    println!("Hello, ");
+    sleep(Duration::from_secs(1)).await;
+    println!("World!");
+}
+```
+
+In the above code, `hello_world` is an asynchronous function, as it prefixes `async`. We use the `await` keyword to pause its execution until the future is resolved or completed. The `hello_world` function prints "`Hello,` " immediately to the console. The invocation of the `Duration::from_secs(1)` function pauses its execution for one second. The `await` keyword waits for the sleep future to complete. Finally, the `hello_world` function prints "`World!`" to the console.
+
+The `main` function is an function (technically, not an async function) with the `#[tokio::main]` attribute. The `#[tokio::main]` attribute specifies the entry point of an asynchronous Rust program that runs on the Tokio runtime. Under the hood, the `#[tokio::main]` attribute transforms the regular main function into an async-aware function, allowing it to use asynchronous code, including async/await syntax.
+
+```rust
+// Syntactic sugar version
+#[tokio::main]
+async fn main() { 
+    hello_world().await;
+}
+
+
+// Desugar version
+fn main() -> Results<()> {
+	let body = async { /* some async code */ };
+
+	{
+		return tokio::runtime::Builder::new_multi_thread()
+			.enable_all()
+			.build()
+			.expect("Failed building the Runtime")
+			.block_on(body);
+	}
+}
+```
+
+### Components of Tokio
+
+- **Executor** maintains a state about what resources it's waiting on.
+- **Reactor** interacts with operating system (via crate Mio) to say "Wake me up if any of these file descriptors change state." It also handles waiting on non-OS events, such as receiving on a channel.
+
+### Error handling in async programs
+
+Error handling in asynchronous code involves using the `Result` type and handling errors with the `?` operator.
+
+```rust[class="line-numbers"]
+async fn process_file() -> io::Result<()> {
+    let contents = read_file_contents().await?;  // assume read_file_contents() reads file
+    // Process the file contents
+    Ok(())
+}
+
+#[tokio::main]
+async fn main() {
+    match process_file().await {
+        Ok(()) => println!("File processed successfully."),
+        Err(err) => eprintln!("Error processing file: {}", err),
+    }
+}
+```
+
+The `process_file` function returns an `io::Result` that represents the possibility of an I/O error. By using the `?` operator after the asynchronous operation, the Tokio runtime will propagate errors into the call stack. The `main` function handles the result with a `match` statement.
 
 ---
 
@@ -219,13 +346,11 @@ The main objective of concurrency is to maximize the CPU by minimizing its idle 
 
 **Asynchronous programming** is a language feature that enables concurrency and/or parallelism. As it turns out, asynchronous programming is entirely unrelated to concurrency and parallelism.
 
-## What is cooperative multitasking?
+## What is cooperative and preemptive multitasking?
 
-Each task in cooperative multitasking decides when it can be handed over to another.
+**Cooperative multitasking**: Each task in cooperative multitasking decides when it can be handed over to another.
 
-## What is preemptive multitasking?
-
-In preemptive multitasking, as opposed to cooperative multitasking, the system decides when to switch to other tasks.
+**Preemptive multitasking**: As opposed to cooperative multitasking, the system decides when to switch to other tasks.
 
 ## How does a kernel-level thread differ from a user-level thread?
 
@@ -240,6 +365,12 @@ In preemptive multitasking, as opposed to cooperative multitasking, the system d
 **Disadvantages**
 
 - Stack growth can cause issues!
+
+## What is the difference between `.await` and `block_on`?
+
+The `.await` passed the wait along. It doesn't block; it just propagates the wait, allowing us to continue with other tasks.
+
+The `block_on` on the other hand, is different because it doesn't propagate the wait. It just block until the future is finished. It doesn't return to the caller of the future. It doesn't allow us to do other things, it waits until the future has finished.
 
 ---
 
