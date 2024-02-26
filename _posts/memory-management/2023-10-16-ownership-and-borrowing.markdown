@@ -8,7 +8,7 @@ image-credits: "Vector image designed by <a href='https://www.freepik.com/' targ
 imageshadow: true
 toc: true
 author: senthil
-date: 2023-10-16 00:00:00 +0530
+date: 2024-01-16 00:00:00 +0530
 last_modified_at: 2023-11-18
 tags: [ "ownership-borrowing", "memory-management", "ownership", "borrowing", "borrow-checker" ]
 categories: ownership-borrowing
@@ -21,7 +21,7 @@ rating: 4.5
 
 The Rust’s *ownership* and *borrowing* might be confusing if we don't grasp what's really going on. This is particularly true when applying a previously learned programming style to a new paradigm; we call this a *paradigm shift*. Ownership is a novel idea, yet tricky to understand at first, but it gets easier the more we work on it.
 
-<mark>With ownership and borrowing, Rust doesn't need a "garbage collector,"</mark> which incurs runtime overhead as the collector must periodically scan the heap to identify and reclaim unused memory.
+With ownership and borrowing, Rust doesn't need a "garbage collector," which incurs runtime overhead as the collector must periodically scan the heap to identify and reclaim unused memory.
 
 Before we go further about Rust’s ownership and borrowing, let’s first understand what *memory safety* and *memory leak* are and how programming languages deal with them.
 
