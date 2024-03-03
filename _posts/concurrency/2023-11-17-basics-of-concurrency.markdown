@@ -13,14 +13,15 @@ date: 2023-11-17 00:00:00 +0530
 tags: [ "concurrency" ]
 categories: concurrency
 featured: false
-hidden: true
+hidden: false
+draft: true
 ---
 
 # Overview
 
-Typically, in an operating system, multiple processes run concurrently. Operating systems make every effort to isolate these processes from one another. When processes are isolated from one another, it indicates that a process is typically not able to communicate with or access the memory of another process. However, threads within the same process are not isolated from each other. Threads within the process share memory and are able to communicate and collaborate using that shared memory.
+Typically, in an operating system, multiple processes run **concurrently** (all at the same time). Operating systems make every effort to isolate these processes from one another to ensure that processes running concurrently on a computer system do not interfere with each other's operations and resources. Operating systems achieve process isolation through various means, which we will get into later. When processes are isolated from one another, it indicates that a process is typically not able to communicate with or access the memory of another process. However, threads within the same process are not isolated from each other. Threads within the process share memory and are able to communicate and collaborate using that shared memory.
 
-> **Spawn:** In the context of threading, "spawn" typically refers to the creation of a new thread or process. The term is commonly used to describe the action of initiating a parallel or concurrent execution unit.
+> **What is spawn?** In the context of threading, "spawn" typically refers to the creation of a new thread or process. The term is commonly used to describe the action of initiating a parallel or concurrent execution unit.
 
 We will look at how threads are spawned in Rust and all the fundamental concepts surrounding them, such as how to safely share data between multiple threads.
 
@@ -28,7 +29,7 @@ We will look at how threads are spawned in Rust and all the fundamental concepts
 
 # Threads in Rust
 
-Every program is made up of one or more threads. <mark>A thread is the smallest executable unit of a process</mark>. Threads enable us to split a program into multiple tasks, each executed in a separate thread. A program begins with exactly one thread, referred to as the "main thread"[^1]. This main thread will execute our main function, and can be used to spawn more threads if necessary. In Rust, new threads[^2] are spawned using the `thread::spawn` function from the standard library (`std` module[^3]). This `thread::spawn` function spawns a new **native operating system** thread, aka **kernel-level thread** (**KLT**).
+Every program is made up of one or more threads. **A thread is the smallest executable unit of a process**. Threads enable us to split a program into multiple tasks, each executed in a separate thread. A program begins with exactly one thread, referred to as the "main thread"[^1]. This main thread will execute our main function, and can be used to spawn more threads if necessary. In Rust, new threads[^2] are spawned using the `thread::spawn` function from the standard library (`std` module[^3]). This `thread::spawn` function spawns a new **native operating system** thread, aka **kernel-level thread** (**KLT**).
 
 Consider the following example:
 
@@ -132,7 +133,7 @@ Here are some common synchronization mechanisms used in threading:
 
 [^1]: In Rust, like in many other programming languages, the "**main thread**" refers to the initial thread of execution that is created when a Rust program starts running. The main thread is the thread in which the `main` function of a Rust program is executed. The `main` function is the entry point of a Rust program. The additional spawned threads can run concurrently with the main thread, allowing programmers to write concurrent and parallel code. When the main thread of a Rust program terminates, the entire program shuts down, even if other threads are still running.
 
-[^2]: Rust only includes the native OS thread (also known as kernel thread) in its `std` module. An executing Rust program consists of a collection of native OS threads, each with their own stack and local state. Note that Rust doesn't have a green thread (also known as user-level or lightweight thread) implementation as part of its standard library (`std` module). Initially, Rust's standard library supported both native and green threading, but later the green thread was removed from the standard library due to the fact that it demanded a larger language runtime. Refer [here](https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md){:target="_blank"} for more information.
+[^2]: Rust only includes the native OS thread (also known as kernel thread) in its `std` module. A Rust program in execution is made up of several **native OS threads**, each of which has its own stack and local state. Note that Rust doesn't have a **green thread** (also known as user-level or lightweight thread) implementation as part of its standard library (`std` module). Initially, Rust's standard library supported both native and green threading, but later the green thread was removed from the standard library due to the fact that it demanded a larger language runtime. Refer [here](https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md){:target="_blank"} for more information.
 
 [^3]: A **module** in Rust is a collection of "related" items that includes functions, structs, and even other modules as well.
 

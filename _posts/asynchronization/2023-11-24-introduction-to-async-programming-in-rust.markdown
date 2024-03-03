@@ -23,8 +23,8 @@ Asynchronous programming is a form of **concurrency programming model** that all
 
 This promotes: 
 
-- **Efficient utilization of resources** 
-- **Efficient management I/O operations** that often involve waiting for external events 
+- **Efficient utilization of resources**. 
+- **Efficient management of I/O operations** that often involve waiting for external events. 
 - **Improved responsiveness**, especially in scenarios where tasks involve waiting for I/O operations, such as reading from or writing to a file, handling user input, etc.
 
 **Synchronous programming**, aka **sequential programming**, is more widely adopted, mature, and "standardized" than concurrent programming. In traditional **synchronous programming**, aka **sequential programming**, when a program encounters an I/O operation (such as reading from a file or interacting with a database), it typically blocks and waits for the operation to complete before moving on to the next instruction. During this blocking period, the entire program may remain idle, potentially leading to insufficient utilization of resources.
@@ -75,7 +75,7 @@ Let's understand some of the most popular concurrency models that can help us un
 
 #### Event-driven programming
 
-- Event-driven programming, in conjunction with callbacks, can be very performant but tends to result in complex and non-linear asynchronous control flow.
+- Event-driven programming, in conjunction with callbacks, can be very performant but tends to result in complex and non-linear asynchronous control flow.
 - Data flow and error propagation is often hard to follow.
 
 #### Coroutines
